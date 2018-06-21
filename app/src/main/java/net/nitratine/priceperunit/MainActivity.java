@@ -21,23 +21,17 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         UnitTypeSpnr.setAdapter(adapter);
 
-        addItem();
-        addItem();
-        addItem();
-        addItem();
     }
 
-    protected void addItem() {
-        // https://stackoverflow.com/questions/2395769/how-to-programmatically-add-views-to-views
-        // https://stackoverflow.com/questions/2271570/android-findviewbyid-finding-view-by-id-when-view-is-not-on-the-same-layout-in
-        View inflatedView = View.inflate(this, R.layout.item_tile, (LinearLayout) findViewById(R.id.mainLayout));
-        LinearLayout mainLayout = (LinearLayout) findViewById(R.id.mainLayout);
-        LinearLayout recentlyAdded = (LinearLayout) mainLayout.getChildAt(mainLayout.getChildCount() - 1);
+    protected void addItem(View view) {
+        View inflatedView = View.inflate(this, R.layout.item_tile, (LinearLayout) findViewById(R.id.itemLayout));
+        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
         ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item 1");
         Log.d("addItem", "Inflated");
     }
 
-    protected void setUnitOptions() {
+    protected void setUnitOptions(View view) {
 
     }
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="4dp"
-    android:background="#649e9e9e"
+    android:background="#32a1a1a1"
     android:orientation="vertical"
     android:padding="4dp">
 
@@ -97,6 +97,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 android:scaleY="-1"
                 app:srcCompat="@drawable/arrow_upward" />
 
@@ -105,6 +106,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/arrow_upward" />
 
             <ImageButton
@@ -112,6 +114,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:background="@android:color/transparent"
                 app:srcCompat="@drawable/delete" />
 
         </LinearLayout>
