@@ -84,7 +84,8 @@
             android:layout_weight="2"
             android:padding="2dp"
             android:textAlignment="center"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="0dp"
