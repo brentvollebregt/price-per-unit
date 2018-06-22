@@ -3,6 +3,7 @@ package net.nitratine.priceperunit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -25,6 +26,18 @@ public class MainActivity extends AppCompatActivity {
         String[] items = new String[] {"Weight", "Volume", "Length", "Pieces"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         unitTypeSpinner.setAdapter(adapter);
+
+        unitTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                unitTypeChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -111,8 +124,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    protected void unitTypeChanged(View view) {
+    protected void unitTypeChanged() {
         // When the main unit type is changed, assign new units to items
+        for (int i = 0; i < itemLayout.getChildCount(); i++) {
+            setUnitOptions(itemLayout.getChildAt(i));
+        }
     }
 
     protected void generateResults() {
