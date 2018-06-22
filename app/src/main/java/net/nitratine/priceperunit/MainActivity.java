@@ -13,6 +13,9 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout itemLayout;
@@ -152,9 +155,9 @@ public class MainActivity extends AppCompatActivity {
             Float price = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString() );
             Float quantity = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString() );
             Float amountPerQty = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString() );
-            Float unitPerDollar = (quantity * amountPerQty) / price; // TODO Rounding
+            Float unitPerDollar = (quantity * amountPerQty) / price;
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
-            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unitPerDollar.toString() + unit + "/$");
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitPerDollar) + unit + "/$");
         } else {
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/$");
@@ -200,6 +203,13 @@ public class MainActivity extends AppCompatActivity {
 
     protected void generateResults() {
         // Recalculate the results tile
+    }
+
+    private String roundToString(Float value) {
+        DecimalFormat df = new DecimalFormat("#.####");
+        df.setRoundingMode(RoundingMode.CEILING);
+        Double d = value.doubleValue();
+        return df.format(d);
     }
 
 }
