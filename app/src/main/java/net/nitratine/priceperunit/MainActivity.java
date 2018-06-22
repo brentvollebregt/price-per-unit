@@ -158,12 +158,12 @@ public class MainActivity extends AppCompatActivity {
             Float unitPerDollar = (quantity * amountPerQty) / price;
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitPerDollar) + unit + "/$");
+
+            generateResults();
         } else {
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/$");
         }
-
-        generateResults();
     }
 
     protected void moveItemUp(View view) {

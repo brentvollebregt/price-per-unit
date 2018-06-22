@@ -83,7 +83,6 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:padding="2dp"
-            android:text="94.5g/$"
             android:textAlignment="center"
             android:textSize="16sp" />
 
