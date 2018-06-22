@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    LinearLayout itemLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         UnitTypeSpnr.setAdapter(adapter);
 
+        itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+
     }
 
     protected void addItem(View view) {
-        View inflatedView = View.inflate(this, R.layout.item_tile, (LinearLayout) findViewById(R.id.itemLayout));
-        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        View inflatedView = View.inflate(this, R.layout.item_tile, itemLayout);
         LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
         ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
         ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
@@ -58,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         String unitType = ((Spinner) findViewById(R.id.unitTypeSpnr)).getSelectedItem().toString();
         Spinner unitSpinner = (Spinner) view.findViewById(R.id.unitSpnr);
 
+        // TODO If we already have the correct elements then don't change
         String[] items;
         if (unitType.compareTo("Weight") == 0) {
             items = new String[] {"g", "kg", "tonne"};
@@ -80,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void moveItemUp(View view) {
         // Moves an item up. View passed in is the move up button.
-        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
         itemLayout.removeView(itemBeingMoved);
@@ -89,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
     protected void moveItemDown(View view) {
         // Moves an item down. View passed in is the move down button.
-        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
         itemLayout.removeView(itemBeingMoved);
@@ -98,14 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
     protected void deleteItem(View view) {
         // Removes an item. View passed in is the delete button.
-        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         itemLayout.removeView((LinearLayout) view.getParent().getParent().getParent());
     }
 
     protected void clearItems(View view) {
         // Clear all items in the itemLayout
-        if  (((LinearLayout) findViewById(R.id.itemLayout)).getChildCount() > 0) {
-            ((LinearLayout) findViewById(R.id.itemLayout)).removeAllViews();
+        if  (itemLayout.getChildCount() > 0) {
+            itemLayout.removeAllViews();
         }
     }
 
