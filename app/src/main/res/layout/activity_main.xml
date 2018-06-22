@@ -49,27 +49,27 @@
 
                 <TextView
                     android:id="@+id/textView2"
-                    android:layout_width="20dp"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="4dp"
                     android:layout_weight="1"
                     android:gravity="right|center_vertical"
+                    android:paddingLeft="4dp"
                     android:text="Unit Type: "
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
 
                 <Spinner
                     android:id="@+id/unitTypeSpnr"
-                    android:layout_width="35dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.2" />
 
                 <Button
                     android:id="@+id/clearBtn"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.8"
                     android:onClick="clearItems"
                     android:text="Clear" />
 
