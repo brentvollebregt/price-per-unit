@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -27,8 +28,15 @@ public class MainActivity extends AppCompatActivity {
         View inflatedView = View.inflate(this, R.layout.item_tile, (LinearLayout) findViewById(R.id.itemLayout));
         LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
-        ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item 1");
-        Log.d("addItem", "Inflated");
+        ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
+        final ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteItem(v);
+            }
+        });
+
     }
 
     protected void setUnitOptions(View view) {
@@ -48,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void deleteItem(View view) {
-
+        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        itemLayout.removeView((LinearLayout) view.getParent().getParent().getParent());
     }
 
     protected void generateResults() {
@@ -56,7 +65,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void clearItems(View view) {
-        Log.d("Clear", "Entry");
+        if  (((LinearLayout) findViewById(R.id.itemLayout)).getChildCount() > 0) {
+            ((LinearLayout) findViewById(R.id.itemLayout)).removeAllViews();
+        }
     }
 
 }

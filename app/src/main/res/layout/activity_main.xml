@@ -87,7 +87,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="4dp"
-                android:background="@color/colorPrimary">
+                android:background="@color/colorPrimary"
+                android:onClick="addItem">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -116,7 +117,6 @@
                         android:adjustViewBounds="false"
                         android:background="@android:color/transparent"
                         android:cropToPadding="false"
-                        android:onClick="addItem"
                         android:tint="@android:color/white"
                         app:srcCompat="@drawable/add_circle" />
 
