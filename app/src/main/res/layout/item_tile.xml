@@ -93,7 +93,7 @@
             android:orientation="horizontal">
 
             <ImageButton
-                android:id="@+id/downImageButton"
+                android:id="@+id/moveDownBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -102,7 +102,7 @@
                 app:srcCompat="@drawable/arrow_upward" />
 
             <ImageButton
-                android:id="@+id/upImageButton"
+                android:id="@+id/moveUpBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -110,7 +110,7 @@
                 app:srcCompat="@drawable/arrow_upward" />
 
             <ImageButton
-                android:id="@+id/trashImageButton"
+                android:id="@+id/deleteBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
