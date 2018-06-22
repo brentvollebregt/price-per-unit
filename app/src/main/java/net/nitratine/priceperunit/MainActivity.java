@@ -29,11 +29,25 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
         ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
-        final ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
+        ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteItem(v);
+            }
+        });
+        ImageButton moveUpBtn = (ImageButton) recentlyAdded.findViewById(R.id.moveUpBtn);
+        moveUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveItemUp(v);
+            }
+        });
+        ImageButton moveDownBtn = (ImageButton) recentlyAdded.findViewById(R.id.moveDownBtn);
+        moveDownBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveItemDown(v);
             }
         });
 
@@ -48,11 +62,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void moveItemUp(View view) {
-
+        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
+        int index = itemLayout.indexOfChild(itemBeingMoved);
+        itemLayout.removeView(itemBeingMoved);
+        itemLayout.addView(itemBeingMoved, index - 1);
     }
 
     protected void moveItemDown(View view) {
-
+        LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
+        int index = itemLayout.indexOfChild(itemBeingMoved);
+        itemLayout.removeView(itemBeingMoved);
+        itemLayout.addView(itemBeingMoved, index + 1);
     }
 
     protected void deleteItem(View view) {
