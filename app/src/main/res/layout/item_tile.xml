@@ -21,6 +21,7 @@
             android:ems="10"
             android:hint="Item Name"
             android:inputType="textPersonName"
+            android:onClick="itemModified"
             android:text="Item"
             android:textSize="16sp" />
 

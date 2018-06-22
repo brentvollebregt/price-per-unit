@@ -2,9 +2,12 @@ package net.nitratine.priceperunit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
@@ -42,9 +45,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void addItem(View view) {
+        // Inflate and get object
         View inflatedView = View.inflate(this, R.layout.item_tile, itemLayout);
-        LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
+        final LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
+
+        // Set item name
         ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
+
+        // Link delete
         ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +60,8 @@ public class MainActivity extends AppCompatActivity {
                 deleteItem(v);
             }
         });
+
+        // Link move up
         ImageButton moveUpBtn = (ImageButton) recentlyAdded.findViewById(R.id.moveUpBtn);
         moveUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 moveItemUp(v);
             }
         });
+
+        // Link move down
         ImageButton moveDownBtn = (ImageButton) recentlyAdded.findViewById(R.id.moveDownBtn);
         moveDownBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +78,47 @@ public class MainActivity extends AppCompatActivity {
                 moveItemDown(v);
             }
         });
+
+        // Set unit options
         setUnitOptions(recentlyAdded);
+
+        // Setup modification watcher for the three value inputs
+        EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
+        EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
+        EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
+        TextWatcher modificationWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                itemModified(recentlyAdded);
+            }
+        };
+        priceEditText.addTextChangedListener(modificationWatcher);
+        quantityEditText.addTextChangedListener(modificationWatcher);
+        sizePerQtyEditText.addTextChangedListener(modificationWatcher);
+
+        // Setup a watcher for the change of unit
+        Spinner unitSpnr = (Spinner) recentlyAdded.findViewById(R.id.unitSpnr);
+        unitSpnr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                itemModified(recentlyAdded);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -75,7 +127,6 @@ public class MainActivity extends AppCompatActivity {
         String unitType = unitTypeSpinner.getSelectedItem().toString();
         Spinner unitSpinner = (Spinner) view.findViewById(R.id.unitSpnr);
 
-        // TODO If we already have the correct elements then don't change
         String[] items;
         if (unitType.compareTo("Weight") == 0) {
             items = new String[] {"g", "kg", "tonne"};
@@ -91,8 +142,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void itemModified(View view) {
-        // When an item is modified, recalculate
-        // TODO recalculate specific unit/$
+        // When an item/unit is modified, recalculate
+        LinearLayout itemTile = (LinearLayout) view.getParent().getParent();
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString();
+        String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
+
+        if (priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0 ) {
+            Float price = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString() );
+            Float quantity = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString() );
+            Float amountPerQty = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString() );
+            Float unitPerDollar = (quantity * amountPerQty) / price; // TODO Rounding
+            String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unitPerDollar.toString() + unit + "/$");
+        }
+
         generateResults();
     }
 
