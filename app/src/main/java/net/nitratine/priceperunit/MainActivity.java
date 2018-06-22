@@ -2,7 +2,6 @@ package net.nitratine.priceperunit;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
@@ -18,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Spinner UnitTypeSpnr = (Spinner) findViewById(R.id.unitTypeSpnr);
-        String[] items = new String[]{"Weight", "Volume", "Length", "Pieces"};
+        String[] items = new String[] {"Weight", "Volume", "Length", "Pieces"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         UnitTypeSpnr.setAdapter(adapter);
 
@@ -50,18 +49,37 @@ public class MainActivity extends AppCompatActivity {
                 moveItemDown(v);
             }
         });
+        setUnitOptions(recentlyAdded);
 
     }
 
     protected void setUnitOptions(View view) {
+        // Set unit options for specific item (LinearLayout root)
+        String unitType = ((Spinner) findViewById(R.id.unitTypeSpnr)).getSelectedItem().toString();
+        Spinner unitSpinner = (Spinner) view.findViewById(R.id.unitSpnr);
 
+        String[] items;
+        if (unitType.compareTo("Weight") == 0) {
+            items = new String[] {"g", "kg", "tonne"};
+        } else if (unitType.compareTo("Volume") == 0) {
+            items = new String[] {"ml", "l",};
+        } else if(unitType.compareTo("Length") == 0) {
+            items = new String[] {"mm", "cm", "m", "km"};
+        } else {
+            items = new String[] {"pcs"};
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        unitSpinner.setAdapter(adapter);
     }
 
     protected void itemModified(View view) {
-
+        // When an item is modified, recalculate
+        // TODO recalculate specific unit/$
+        generateResults();
     }
 
     protected void moveItemUp(View view) {
+        // Moves an item up. View passed in is the move up button.
         LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
@@ -70,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void moveItemDown(View view) {
+        // Moves an item down. View passed in is the move down button.
         LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
@@ -78,18 +97,24 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void deleteItem(View view) {
+        // Removes an item. View passed in is the delete button.
         LinearLayout itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         itemLayout.removeView((LinearLayout) view.getParent().getParent().getParent());
     }
 
-    protected void generateResults() {
-
-    }
-
     protected void clearItems(View view) {
+        // Clear all items in the itemLayout
         if  (((LinearLayout) findViewById(R.id.itemLayout)).getChildCount() > 0) {
             ((LinearLayout) findViewById(R.id.itemLayout)).removeAllViews();
         }
+    }
+
+    protected void unitTypeChanged(View view) {
+        // When the main unit type is changed, assign new units to items
+    }
+
+    protected void generateResults() {
+        // Recalculate the results tile
     }
 
 }
