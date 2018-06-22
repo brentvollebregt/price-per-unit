@@ -83,9 +83,9 @@ public class MainActivity extends AppCompatActivity {
         setUnitOptions(recentlyAdded);
 
         // Setup modification watcher for the three value inputs
-        EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
-        EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
-        EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
+        final EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
+        final EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
+        final EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
         TextWatcher modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void itemModified(View view) {
         // When an item/unit is modified, recalculate
-        LinearLayout itemTile = (LinearLayout) view.getParent().getParent();
+        LinearLayout itemTile = (LinearLayout) view;
         String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString();
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
@@ -155,6 +155,9 @@ public class MainActivity extends AppCompatActivity {
             Float unitPerDollar = (quantity * amountPerQty) / price; // TODO Rounding
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unitPerDollar.toString() + unit + "/$");
+        } else {
+            String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/$");
         }
 
         generateResults();
