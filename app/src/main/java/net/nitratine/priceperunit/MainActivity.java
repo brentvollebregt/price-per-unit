@@ -12,18 +12,19 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     LinearLayout itemLayout;
+    Spinner unitTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner UnitTypeSpnr = (Spinner) findViewById(R.id.unitTypeSpnr);
+        itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
+
         String[] items = new String[] {"Weight", "Volume", "Length", "Pieces"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
-        UnitTypeSpnr.setAdapter(adapter);
-
-        itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
+        unitTypeSpinner.setAdapter(adapter);
 
     }
 
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setUnitOptions(View view) {
         // Set unit options for specific item (LinearLayout root)
-        String unitType = ((Spinner) findViewById(R.id.unitTypeSpnr)).getSelectedItem().toString();
+        String unitType = unitTypeSpinner.getSelectedItem().toString();
         Spinner unitSpinner = (Spinner) view.findViewById(R.id.unitSpnr);
 
         // TODO If we already have the correct elements then don't change
