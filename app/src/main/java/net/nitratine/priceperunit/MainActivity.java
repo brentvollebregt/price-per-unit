@@ -90,9 +90,32 @@ public class MainActivity extends AppCompatActivity {
 
         // Setup modification watcher for the three value inputs
         final EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
-        final EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
-        final EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
         TextWatcher modificationWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String value = priceEditText.getText().toString();
+                if (!value.startsWith("$")) {
+                    priceEditText.setText("$" + value);
+                    priceEditText.setSelection(value.length() + 1);
+                }
+                itemModified(recentlyAdded);
+
+            }
+        };
+        priceEditText.addTextChangedListener(modificationWatcher);
+
+        EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
+        modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -108,8 +131,25 @@ public class MainActivity extends AppCompatActivity {
                 itemModified(recentlyAdded);
             }
         };
-        priceEditText.addTextChangedListener(modificationWatcher);
         quantityEditText.addTextChangedListener(modificationWatcher);
+
+        EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
+        modificationWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                itemModified(recentlyAdded);
+            }
+        };
         sizePerQtyEditText.addTextChangedListener(modificationWatcher);
 
         // Setup a watcher for the change of unit
@@ -150,14 +190,14 @@ public class MainActivity extends AppCompatActivity {
     protected void itemModified(View view) {
         // When an item/unit is modified, recalculate
         LinearLayout itemTile = (LinearLayout) view;
-        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString();
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
 
         if (priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0 ) {
-            Float price = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString() );
-            Float quantity = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString() );
-            Float amountPerQty = Float.parseFloat( ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString() );
+            Float price = Float.parseFloat(priceText);
+            Float quantity = Float.parseFloat(quantityText);
+            Float amountPerQty = Float.parseFloat(amountPerQtyText);
             Float unitPerDollar = (quantity * amountPerQty) / price;
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitPerDollar) + unit + "/$");
