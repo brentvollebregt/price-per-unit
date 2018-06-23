@@ -103,15 +103,8 @@ public class MainActivity extends AppCompatActivity {
         final EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
         final EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
 
-        nameEditText.setText(name);
-        priceEditText.setText(price);
-        quantityEditText.setText(quantity);
-        sizePerQtyEditText.setText(size);
-
         // Set item name
-        if (name.compareTo("") == 0) {
-            ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
-        }
+        ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
 
         // Link delete
         ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
@@ -200,17 +193,25 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                String unit = unitSpinner.getSelectedItem().toString();
+                String value = sizePerQtyEditText.getText().toString();
+                if (!value.endsWith(unit)) {
+                    sizePerQtyEditText.setText(value.replaceAll("[a-z]|[A-Z]", "") + unit);
+                    sizePerQtyEditText.setSelection(unitSpinner.getSelectedItem().toString().length() + 1 - unit.length());
+                }
                 itemModified(recentlyAdded);
             }
         };
         sizePerQtyEditText.addTextChangedListener(modificationWatcher);
 
         // Setup a watcher for the change of unit
-        Spinner unitSpnr = (Spinner) recentlyAdded.findViewById(R.id.unitSpnr);
-        unitSpnr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemModified(recentlyAdded);
+                if ("".compareTo(sizePerQtyEditText.getText().toString()) != 0) {
+                    sizePerQtyEditText.setText(sizePerQtyEditText.getText().toString() + "Z");
+                }
             }
 
             @Override
@@ -219,6 +220,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // Set passed values at the end to trigger everything
+        if (name.compareTo("") != 0) {
+            nameEditText.setText(name);
+        }
+        if (price.compareTo("") != 0) {
+            priceEditText.setText(price);
+        }
+        if (quantity.compareTo("") != 0) {
+            quantityEditText.setText(quantity);
+        }
+        if (size.compareTo("") != 0) {
+            sizePerQtyEditText.setText(size);
+        }
     }
 
     protected void setUnitOptions(View view) {
@@ -245,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemTile = (LinearLayout) view;
         String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
-        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
 
         if (priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0 ) {
             Float price = Float.parseFloat(priceText);

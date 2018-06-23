@@ -2,9 +2,6 @@
 A simple Android app that helps you compare prices of similar products
 
 # TODO
-- Append g/kg/l/whatever to the end of size
-    - Check if is is currently on there and put it on there if not
-    - Strip all [a-z] with regex to get value
 - Settings
     - Switch unit/$ to $/unit
         - Round to 4dp for u/$
