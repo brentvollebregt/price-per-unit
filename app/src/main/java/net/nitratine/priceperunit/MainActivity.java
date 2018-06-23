@@ -1,12 +1,10 @@
 package net.nitratine.priceperunit;
 
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -48,19 +47,42 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // TODO Check if we have any previous data
+        // TODO Set the global unit type before inserting (based off unit of first item)
+        // TODO Put it in
+        Log.d("onCreate", "Put data in");
+
+        ItemStorage is = new ItemStorage(this);
+        ArrayList<ItemStructure> data = is.getData();
+        Log.d("onCreate", "Amount: " + data.size());
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-    }
+    protected void onStop() {
+        super.onStop();
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+        ArrayList<ItemStructure> data = new ArrayList<ItemStructure>();
+        for (int i = 0; i < itemLayout.getChildCount(); i++) {
+            ItemStructure item = new ItemStructure();
+            LinearLayout itemTile = (LinearLayout) itemLayout.getChildAt(i);
+            item.name = ( (EditText) itemTile.findViewById(R.id.nameEditText) ).getText().toString();
+            item.price = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+            item.quantity = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
+            item.size = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
+            item.unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
+            data.add(item);
+        }
+
+        ItemStorage is = new ItemStorage(this);
+        is.insertData(data);
+
     }
 
     protected void addItem(View view) {
+        addItemManual("", "", "", "", "");
+    }
+
+    protected void addItemManual(String name, String price, String quantity, String size, String unit) {
         // Inflate and get object
         View inflatedView = View.inflate(this, R.layout.item_tile, itemLayout);
         final LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
