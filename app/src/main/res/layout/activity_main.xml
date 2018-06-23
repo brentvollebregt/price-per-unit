@@ -51,7 +51,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="1.1"
                     android:gravity="right|center_vertical"
                     android:paddingLeft="4dp"
                     android:text="Unit Type: "
@@ -69,7 +69,7 @@
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.8"
+                    android:layout_weight="0.7"
                     android:onClick="clearItems"
                     android:text="Clear" />
 
