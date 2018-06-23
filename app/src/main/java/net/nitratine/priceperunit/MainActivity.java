@@ -50,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
     protected void addItem(View view) {
         // Inflate and get object
         View inflatedView = View.inflate(this, R.layout.item_tile, itemLayout);
@@ -253,6 +263,10 @@ public class MainActivity extends AppCompatActivity {
         df.setRoundingMode(RoundingMode.CEILING);
         Double d = value.doubleValue();
         return df.format(d);
+    }
+
+    protected void openSettings(View view) {
+        // TODO Settings activity
     }
 
 }
