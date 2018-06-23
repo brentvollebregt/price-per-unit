@@ -17,6 +17,7 @@ import android.widget.TextView;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,14 +48,25 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // TODO Check if we have any previous data
-        // TODO Set the global unit type before inserting (based off unit of first item)
-        // TODO Put it in
-        Log.d("onCreate", "Put data in");
-
         ItemStorage is = new ItemStorage(this);
         ArrayList<ItemStructure> data = is.getData();
-        Log.d("onCreate", "Amount: " + data.size());
+
+        if (data.size() > 0) {
+            String unit = data.get(0).unit;
+            if (Arrays.asList(new String[] {"g", "kg", "tonne"}).contains(unit)) {
+                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Weight"));
+            } else if (Arrays.asList(new String[] {"ml", "l"}).contains(unit)) {
+                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Volume"));
+            } else if (Arrays.asList(new String[] {"mm", "cm", "m", "km"}).contains(unit)) {
+                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Length"));
+            } else {
+                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Pieces"));
+            }
+
+            for (ItemStructure item : data) {
+                addItemManual(item.name, item.price, item.quantity, item.size, item.unit);
+            }
+        }
     }
 
     @Override
@@ -75,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
 
         ItemStorage is = new ItemStorage(this);
         is.insertData(data);
-
     }
 
     protected void addItem(View view) {
@@ -86,9 +97,21 @@ public class MainActivity extends AppCompatActivity {
         // Inflate and get object
         View inflatedView = View.inflate(this, R.layout.item_tile, itemLayout);
         final LinearLayout recentlyAdded = (LinearLayout) itemLayout.getChildAt(itemLayout.getChildCount() - 1);
+        final EditText nameEditText = (EditText) recentlyAdded.findViewById(R.id.nameEditText);
+        final Spinner unitSpinner = (Spinner) recentlyAdded.findViewById(R.id.unitSpnr);
+        final EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
+        final EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
+        final EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
+
+        nameEditText.setText(name);
+        priceEditText.setText(price);
+        quantityEditText.setText(quantity);
+        sizePerQtyEditText.setText(size);
 
         // Set item name
-        ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
+        if (name.compareTo("") == 0) {
+            ((TextView) recentlyAdded.findViewById(R.id.nameEditText)).setText("Item " + itemLayout.getChildCount());
+        }
 
         // Link delete
         ImageButton deleteBtn = (ImageButton) recentlyAdded.findViewById(R.id.deleteBtn);
@@ -119,9 +142,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set unit options
         setUnitOptions(recentlyAdded);
+        unitSpinner.setSelection(getSpinnerIndex(unitSpinner, unit));
 
         // Setup modification watcher for the three value inputs
-        final EditText priceEditText = (EditText) recentlyAdded.findViewById(R.id.priceEditText);
         TextWatcher modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -146,7 +169,6 @@ public class MainActivity extends AppCompatActivity {
         };
         priceEditText.addTextChangedListener(modificationWatcher);
 
-        EditText quantityEditText = (EditText) recentlyAdded.findViewById(R.id.quantityEditText);
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -165,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         };
         quantityEditText.addTextChangedListener(modificationWatcher);
 
-        EditText sizePerQtyEditText = (EditText) recentlyAdded.findViewById(R.id.sizePerQtyEditText);
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -285,6 +306,16 @@ public class MainActivity extends AppCompatActivity {
         df.setRoundingMode(RoundingMode.CEILING);
         Double d = value.doubleValue();
         return df.format(d);
+    }
+
+    private int getSpinnerIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+
+        return 0;
     }
 
     protected void openSettings(View view) {

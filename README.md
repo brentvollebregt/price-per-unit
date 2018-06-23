@@ -2,9 +2,6 @@
 A simple Android app that helps you compare prices of similar products
 
 # TODO
-- Save items to the database to save states for next time
-    - Save when the application is closing (onResume)
-    - Restore when it is opened (onPause)
 - Append g/kg/l/whatever to the end of size
     - Check if is is currently on there and put it on there if not
     - Strip all [a-z] with regex to get value
