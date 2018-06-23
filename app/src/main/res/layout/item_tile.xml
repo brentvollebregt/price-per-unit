@@ -28,7 +28,8 @@
             android:id="@+id/unitSpnr"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/black" />
 
     </LinearLayout>
 
@@ -83,6 +84,7 @@
             android:layout_weight="2"
             android:padding="2dp"
             android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
 

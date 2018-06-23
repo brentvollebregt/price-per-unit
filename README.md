@@ -4,9 +4,8 @@ A simple Android app that helps you compare prices of similar products
 # TODO
 - Settings
     - Switch unit/$ to $/unit
-        - Round to 4dp for u/$
-        - Round to 2dp for $/u
     - Change currently symbol
+    - Rounding (0-8)
 - Results tile
     - Blue /w white text
     - Shows Item | PPU in a table form (centered to middle)
