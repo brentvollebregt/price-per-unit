@@ -62,7 +62,8 @@
                     android:id="@+id/unitTypeSpnr"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1.2" />
+                    android:layout_weight="1.2"
+                    android:backgroundTint="@android:color/white" />
 
                 <Button
                     android:id="@+id/clearBtn"
