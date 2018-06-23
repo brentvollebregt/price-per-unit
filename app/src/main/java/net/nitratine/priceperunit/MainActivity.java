@@ -152,9 +152,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
                 String value = priceEditText.getText().toString();
+                if (value.compareTo("") == 0) {
+                    return;
+                }
                 if (!value.startsWith("$")) {
                     priceEditText.setText("$" + value);
                     priceEditText.setSelection(value.length() + 1);
+                }
+                if (value.replace("$", "").compareTo("") == 0) {
+                    priceEditText.setText("");
                 }
                 itemModified(recentlyAdded);
 
@@ -195,9 +201,16 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 String unit = unitSpinner.getSelectedItem().toString();
                 String value = sizePerQtyEditText.getText().toString();
+                if (value.compareTo("") == 0) {
+                    return;
+                }
                 if (!value.endsWith(unit)) {
+
                     sizePerQtyEditText.setText(value.replaceAll("[a-z]|[A-Z]", "") + unit);
                     sizePerQtyEditText.setSelection(unitSpinner.getSelectedItem().toString().length() + 1 - unit.length());
+                }
+                if (value.replaceAll("[a-z]|[A-Z]", "").compareTo("") == 0) {
+                    sizePerQtyEditText.setText("");
                 }
                 itemModified(recentlyAdded);
             }
@@ -309,6 +322,21 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < itemLayout.getChildCount(); i++) {
             setUnitOptions(itemLayout.getChildAt(i));
         }
+
+        String unitType = unitTypeSpinner.getSelectedItem().toString();
+        String[] items;
+        if (unitType.compareTo("Weight") == 0) {
+            items = new String[] {"g", "kg", "tonne"};
+        } else if (unitType.compareTo("Volume") == 0) {
+            items = new String[] {"ml", "l",};
+        } else if(unitType.compareTo("Length") == 0) {
+            items = new String[] {"mm", "cm", "m", "km"};
+        } else {
+            items = new String[] {"pcs"};
+        }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.results_spinner_item, items);
+        ( (Spinner) findViewById(R.id.resultsUnitSpinner) ).setAdapter(adapter);
+
     }
 
     protected void generateResults() {
