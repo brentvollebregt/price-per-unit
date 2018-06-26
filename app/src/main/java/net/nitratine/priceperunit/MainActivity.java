@@ -64,7 +64,17 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        // Log.d("Units", "" + unitWorker.convert("m", "km", 555.0));
+        ( (Spinner) findViewById(R.id.resultsUnitSpinner) ).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                generateResults();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
