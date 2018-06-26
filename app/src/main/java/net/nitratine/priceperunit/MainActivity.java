@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -267,10 +266,10 @@ public class MainActivity extends AppCompatActivity {
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
 
         if (priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0 ) {
-            Float price = Float.parseFloat(priceText);
-            Float quantity = Float.parseFloat(quantityText);
-            Float amountPerQty = Float.parseFloat(amountPerQtyText);
-            Float unitPerDollar = (quantity * amountPerQty) / price;
+            Double price = Double.parseDouble(priceText);
+            Double quantity = Double.parseDouble(quantityText);
+            Double amountPerQty = Double.parseDouble(amountPerQtyText);
+            Double unitPerDollar = (quantity * amountPerQty) / price;
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitPerDollar) + unit + "/$");
 
@@ -326,13 +325,60 @@ public class MainActivity extends AppCompatActivity {
 
     protected void generateResults() {
         // Recalculate the results tile
+
+        ArrayList<LinearLayout> itemTiles = new ArrayList<>();
+        for (int i = 0; i < itemLayout.getChildCount(); i++) {
+            if (getBasedItemValueValid(itemLayout.getChildAt(i))) {
+                itemTiles.add((LinearLayout) itemLayout.getChildAt(i));
+            }
+        }
+
+        Double lowestValue;
+        int lowestItemIndex;
+        while (itemTiles.size() > 0) {
+            lowestValue = getBasedItemValue(itemTiles.get(0));
+            lowestItemIndex = 0;
+            for (int i = 1; i < itemTiles.size(); i++) {
+                if (getBasedItemValue(itemTiles.get(i)) < lowestValue) {
+                    lowestValue = getBasedItemValue(itemTiles.get(i));
+                    lowestItemIndex = i;
+                }
+            }
+            // TODO Display
+            itemTiles.remove(lowestItemIndex);
+        }
     }
 
-    private String roundToString(Float value) {
+    private boolean getBasedItemValueValid(View view) {
+        LinearLayout itemTile = (LinearLayout) view;
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+        String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
+        return priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0;
+    }
+
+    private Double getBasedItemValue(View view) {
+        if (!getBasedItemValueValid(view)) {
+            return 0.0;
+        }
+        LinearLayout itemTile = (LinearLayout) view;
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+        String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
+
+        Double price = Double.parseDouble(priceText);
+        Double quantity = Double.parseDouble(quantityText);
+        Double amountPerQty = Double.parseDouble(amountPerQtyText);
+        Double unitPerDollar = (quantity * amountPerQty) / price;
+        String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
+
+        return unitWorker.convertToBase(unit, unitPerDollar);
+    }
+
+    private String roundToString(Double value) {
         DecimalFormat df = new DecimalFormat("#.####");
         df.setRoundingMode(RoundingMode.CEILING);
-        Double d = value.doubleValue();
-        return df.format(d);
+        return df.format(value);
     }
 
     private int getSpinnerIndex(Spinner spinner, String myString){

@@ -6,7 +6,7 @@ public class Units {
 
     public ArrayList<String> unitTypes = new ArrayList<>();
     public ArrayList< ArrayList<String> > units = new ArrayList<>();
-    public ArrayList< ArrayList<Double> > unitBaseRelativity = new ArrayList<>();
+    private ArrayList< ArrayList<Double> > unitBaseRelativity = new ArrayList<>();
 
     public Units() {
         unitTypes.add("Weight");
@@ -71,6 +71,16 @@ public class Units {
 
         value = value / unitARelativity;
         value = value * unitBRelativity;
+
+        return value;
+    }
+
+    public Double convertToBase(String unit, Double value) {
+        for (ArrayList<String> unitGroup : units) {
+            if (unitGroup.contains(unit)) {
+                value = convert(unit, unitGroup.get(0),value);
+            }
+        }
 
         return value;
     }

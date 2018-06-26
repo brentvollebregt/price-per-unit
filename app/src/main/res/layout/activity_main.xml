@@ -195,6 +195,7 @@
                             android:layout_weight="1"
                             android:paddingLeft="6dp"
                             android:text="TextView"
+                            android:textAlignment="textStart"
                             android:textColor="@android:color/white" />
                     </LinearLayout>
                 </LinearLayout>
