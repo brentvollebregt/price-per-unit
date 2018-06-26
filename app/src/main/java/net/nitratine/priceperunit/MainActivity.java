@@ -1,5 +1,6 @@
 package net.nitratine.priceperunit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
@@ -254,6 +256,24 @@ public class MainActivity extends AppCompatActivity {
         if (size.compareTo("") != 0) {
             sizePerQtyEditText.setText(size);
         }
+
+        // Setup watcher for name change
+        nameEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                generateResults();
+            }
+        });
     }
 
     protected void setUnitOptions(View view) {
@@ -411,7 +431,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void openSettings(View view) {
-        // TODO Settings activity
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
     }
 
 }
