@@ -85,45 +85,52 @@
 
             </LinearLayout>
 
-            <RelativeLayout
+            <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@color/colorPrimary"
-                android:onClick="addItem">
+                app:mrl_rippleColor="#FFFFFF"
+                app:mrl_rippleBackground="@color/colorPrimary"
+                app:mrl_rippleDelayClick="false">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:onClick="addItem">
 
-                    <TextView
-                        android:id="@+id/textView3"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:gravity="right|center"
-                        android:text="Add item"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
 
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="false"
-                        android:background="@android:color/transparent"
-                        android:cropToPadding="false"
-                        android:tint="@android:color/white"
-                        app:srcCompat="@drawable/add_circle" />
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="10dp"
+                            android:layout_weight="1"
+                            android:gravity="right|center"
+                            android:text="Add item"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
 
-                </LinearLayout>
-            </RelativeLayout>
+                        <ImageButton
+                            android:id="@+id/imageButton"
+                            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="false"
+                            android:background="@android:color/transparent"
+                            android:cropToPadding="false"
+                            android:tint="@android:color/white"
+                            app:srcCompat="@drawable/add_circle" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -202,46 +209,53 @@
 
             </LinearLayout>
 
-            <RelativeLayout
+            <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
-                android:layout_height="28dp"
-                android:layout_marginBottom="4dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:background="@color/colorPrimary"
-                android:onClick="openSettings">
+                android:layout_marginBottom="4dp"
+                app:mrl_rippleColor="#FFFFFF"
+                app:mrl_rippleBackground="@color/colorPrimary"
+                app:mrl_rippleDelayClick="false">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_centerHorizontal="true"
-                    android:orientation="horizontal"
-                    android:padding="2dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="28dp"
+                    android:onClick="openSettings">
 
-                    <TextView
-                        android:id="@+id/settingsTextView"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginRight="4dp"
-                        android:layout_weight="1"
-                        android:gravity="right|center"
-                        android:text="Settings"
-                        android:textColor="@android:color/white"
-                        android:textSize="16sp" />
+                        android:layout_centerHorizontal="true"
+                        android:orientation="horizontal"
+                        android:padding="2dp">
 
-                    <ImageButton
-                        android:id="@+id/SettingsImageButton"
-                        style="@android:style/Widget.DeviceDefault.Light.ImageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="false"
-                        android:background="@android:color/transparent"
-                        android:cropToPadding="false"
-                        android:tint="@android:color/white"
-                        app:srcCompat="@drawable/settings" />
+                        <TextView
+                            android:id="@+id/settingsTextView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="4dp"
+                            android:layout_weight="1"
+                            android:gravity="right|center"
+                            android:text="Settings"
+                            android:textColor="@android:color/white"
+                            android:textSize="16sp" />
 
-                </LinearLayout>
-            </RelativeLayout>
+                        <ImageButton
+                            android:id="@+id/SettingsImageButton"
+                            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:adjustViewBounds="false"
+                            android:background="@android:color/transparent"
+                            android:cropToPadding="false"
+                            android:tint="@android:color/white"
+                            app:srcCompat="@drawable/settings" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+            </com.balysv.materialripple.MaterialRippleLayout>
 
         </LinearLayout>
     </ScrollView>

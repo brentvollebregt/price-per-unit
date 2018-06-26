@@ -215,57 +215,71 @@
                         android:textSize="18sp" />
                 </LinearLayout>
 
-                <LinearLayout
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleColor="#FFFFFF">
 
-                    <ImageView
-                        android:id="@+id/imageView3111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.13"
-                        app:srcCompat="@drawable/star_white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView9111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.87"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="Rate This App"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imageView3111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.13"
+                            app:srcCompat="@drawable/star_white" />
 
-                <LinearLayout
+                        <TextView
+                            android:id="@+id/textView9111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.87"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:text="Rate This App"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleColor="#FFFFFF">
 
-                    <ImageView
-                        android:id="@+id/imageView31111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.13"
-                        app:srcCompat="@drawable/bug_white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView91111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.87"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="Bug Reporting"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imageView31111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.13"
+                            app:srcCompat="@drawable/bug_white" />
+
+                        <TextView
+                            android:id="@+id/textView91111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.87"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:text="Bug Reporting"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </com.balysv.materialripple.MaterialRippleLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -276,57 +290,71 @@
                 android:orientation="vertical"
                 android:padding="4dp">
 
-                <LinearLayout
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleColor="#FFFFFF">
 
-                    <ImageView
-                        android:id="@+id/imageView311111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.13"
-                        app:srcCompat="@drawable/developer_white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView911111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.87"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="Developers Site"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imageView311111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.13"
+                            app:srcCompat="@drawable/developer_white" />
 
-                <LinearLayout
+                        <TextView
+                            android:id="@+id/textView911111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.87"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:text="Developers Site"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    app:mrl_rippleColor="#FFFFFF">
 
-                    <ImageView
-                        android:id="@+id/imageView3111111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.13"
-                        app:srcCompat="@drawable/license_white" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/textView9111111"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0.87"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="8dp"
-                        android:text="Licenses"
-                        android:textColor="@android:color/white"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imageView3111111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.13"
+                            app:srcCompat="@drawable/license_white" />
+
+                        <TextView
+                            android:id="@+id/textView9111111"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.87"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="8dp"
+                            android:text="Licenses"
+                            android:textColor="@android:color/white"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>
 
