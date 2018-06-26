@@ -6,6 +6,10 @@ A simple Android app that helps you compare prices of similar products
     - Switch unit/$ to $/unit
     - Change currently symbol
     - Rounding (0-8)
+    - Link to developer website
+    - Please review this app
+    - Licences
+        - material.io/icons
 - Results tile
     - Blue /w white text
     - Shows Item | PPU in a table form (centered to middle)

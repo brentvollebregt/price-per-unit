@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout itemLayout;
     Spinner unitTypeSpinner;
+    Units unitWorker = new Units();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
                 addItemManual(item.name, item.price, item.quantity, item.size, item.unit);
             }
         }
+
+        // Log.d("Units", "" + unitWorker.convert("m", "km", 555.0));
     }
 
     @Override
