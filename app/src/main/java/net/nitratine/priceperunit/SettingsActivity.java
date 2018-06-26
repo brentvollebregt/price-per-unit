@@ -14,6 +14,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onPause() {
+        super.onPause();
+        // TODO Write all to Settings
+        Settings.pushSettings();
+    }
+
+    @Override
     public boolean onSupportNavigateUp(){
         finish();
         return true;

@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
 
+        Settings.setUp(this);
+        Settings.pullSettings();
+
         itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
 
