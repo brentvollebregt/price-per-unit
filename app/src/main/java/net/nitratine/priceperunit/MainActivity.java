@@ -261,23 +261,17 @@ public class MainActivity extends AppCompatActivity {
     protected void itemModified(View view) {
         // When an item/unit is modified, recalculate
         LinearLayout itemTile = (LinearLayout) view;
-        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
-        String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
-        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
 
-        if (priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0 ) {
-            Double price = Double.parseDouble(priceText);
-            Double quantity = Double.parseDouble(quantityText);
-            Double amountPerQty = Double.parseDouble(amountPerQtyText);
-            Double unitPerDollar = (quantity * amountPerQty) / price;
+        if (getBasedItemValueValid(itemTile)) {
+            Double baseUnitValue = getBasedItemValue(itemTile);
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
-            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitPerDollar) + unit + "/$");
-
-            generateResults();
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitWorker.convert(unitWorker.getBaseUnit(unit), unit, baseUnitValue)) + unit + "/$");
         } else {
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
             ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/$");
         }
+
+        generateResults();
     }
 
     protected void moveItemUp(View view) {
