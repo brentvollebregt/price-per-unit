@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
 
-        String[] items = new String[] {"Weight", "Volume", "Length", "Pieces"};
+        String[] items = unitWorker.unitTypes.toArray(new String[0]);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         unitTypeSpinner.setAdapter(adapter);
 
@@ -54,14 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (data.size() > 0) {
             String unit = data.get(0).unit;
-            if (Arrays.asList(new String[] {"g", "kg", "tonne"}).contains(unit)) {
-                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Weight"));
-            } else if (Arrays.asList(new String[] {"ml", "l"}).contains(unit)) {
-                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Volume"));
-            } else if (Arrays.asList(new String[] {"mm", "cm", "m", "km"}).contains(unit)) {
-                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Length"));
-            } else {
-                unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, "Pieces"));
+            for (int i = 0 ; i < unitWorker.units.size(); i++) {
+                if (unitWorker.units.get(i).contains(unit)) {
+                    unitTypeSpinner.setSelection(getSpinnerIndex(unitTypeSpinner, unitWorker.unitTypes.get(i)));
+                }
             }
 
             for (ItemStructure item : data) {
@@ -256,16 +252,9 @@ public class MainActivity extends AppCompatActivity {
         String unitType = unitTypeSpinner.getSelectedItem().toString();
         Spinner unitSpinner = (Spinner) view.findViewById(R.id.unitSpnr);
 
-        String[] items;
-        if (unitType.compareTo("Weight") == 0) {
-            items = new String[] {"g", "kg", "tonne"};
-        } else if (unitType.compareTo("Volume") == 0) {
-            items = new String[] {"ml", "l",};
-        } else if(unitType.compareTo("Length") == 0) {
-            items = new String[] {"mm", "cm", "m", "km"};
-        } else {
-            items = new String[] {"pcs"};
-        }
+        int index = unitWorker.unitTypes.indexOf(unitType);
+        String[] items = unitWorker.units.get(index).toArray(new String[0]);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         unitSpinner.setAdapter(adapter);
     }
@@ -327,16 +316,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String unitType = unitTypeSpinner.getSelectedItem().toString();
-        String[] items;
-        if (unitType.compareTo("Weight") == 0) {
-            items = new String[] {"g", "kg", "tonne"};
-        } else if (unitType.compareTo("Volume") == 0) {
-            items = new String[] {"ml", "l",};
-        } else if(unitType.compareTo("Length") == 0) {
-            items = new String[] {"mm", "cm", "m", "km"};
-        } else {
-            items = new String[] {"pcs"};
-        }
+        int index = unitWorker.unitTypes.indexOf(unitType);
+        String[] items = unitWorker.units.get(index).toArray(new String[0]);
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.results_spinner_item, items);
         ( (Spinner) findViewById(R.id.resultsUnitSpinner) ).setAdapter(adapter);
 
