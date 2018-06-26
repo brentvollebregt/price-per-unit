@@ -84,4 +84,14 @@ public class Units {
 
         return value;
     }
+
+    public String getBaseUnit(String unit) {
+        String baseUnit = "";
+        for (ArrayList<String> unitGroup : units) {
+            if (unitGroup.contains(unit)) {
+                baseUnit = unitGroup.get(0);
+            }
+        }
+        return baseUnit;
+    }
 }

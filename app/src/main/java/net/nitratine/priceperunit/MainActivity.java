@@ -299,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
     protected void deleteItem(View view) {
         // Removes an item. View passed in is the delete button.
         itemLayout.removeView((LinearLayout) view.getParent().getParent().getParent());
+        generateResults();
     }
 
     protected void clearItems(View view) {
@@ -306,6 +307,7 @@ public class MainActivity extends AppCompatActivity {
         if  (itemLayout.getChildCount() > 0) {
             itemLayout.removeAllViews();
         }
+        generateResults();
     }
 
     protected void unitTypeChanged() {
@@ -325,6 +327,16 @@ public class MainActivity extends AppCompatActivity {
 
     protected void generateResults() {
         // Recalculate the results tile
+        LinearLayout results = (LinearLayout) findViewById(R.id.results);
+        results.removeAllViews();
+
+        if (( (Spinner) findViewById(R.id.resultsUnitSpinner) ).getCount() < 1) {
+            return;
+        }
+
+        String requestedUnit = ( (Spinner) findViewById(R.id.resultsUnitSpinner) ).getSelectedItem().toString();
+        String baseUnit = unitWorker.getBaseUnit(requestedUnit);
+        LinearLayout recentlyAdded;
 
         ArrayList<LinearLayout> itemTiles = new ArrayList<>();
         for (int i = 0; i < itemLayout.getChildCount(); i++) {
@@ -344,7 +356,10 @@ public class MainActivity extends AppCompatActivity {
                     lowestItemIndex = i;
                 }
             }
-            // TODO Display
+            View inflatedView = View.inflate(this, R.layout.results_item, results);
+            recentlyAdded = (LinearLayout) results.getChildAt(results.getChildCount() - 1);
+            ( (TextView) recentlyAdded.findViewById(R.id.resultItemName) ).setText(( (EditText) itemTiles.get(lowestItemIndex).findViewById(R.id.nameEditText) ).getText().toString());
+            ( (TextView) recentlyAdded.findViewById(R.id.resultItemValue) ).setText(roundToString(unitWorker.convert(baseUnit, requestedUnit, lowestValue)) + requestedUnit + "/$");
             itemTiles.remove(lowestItemIndex);
         }
     }
