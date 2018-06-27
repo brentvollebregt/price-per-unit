@@ -200,7 +200,7 @@
                         android:layout_weight="0.87"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Version 1.1"
+                        android:text="Version 1.2"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
                 </LinearLayout>

@@ -95,9 +95,9 @@
                 app:mrl_rippleDelayClick="false">
 
                 <RelativeLayout
+                    android:id="@+id/addItemLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:onClick="addItem">
+                    android:layout_height="35dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -221,9 +221,9 @@
                 app:mrl_rippleDelayClick="false">
 
                 <RelativeLayout
+                    android:id="@+id/settingsLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:onClick="openSettings">
+                    android:layout_height="30dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
