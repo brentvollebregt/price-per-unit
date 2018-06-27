@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         ItemStorage is = new ItemStorage(this);
         ArrayList<ItemStructure> data = is.getData();
 
-        if (data.size() > 0) {
+        if (data.size() > 0 && Settings.rememberData) {
             String unit = data.get(0).unit;
             for (int i = 0 ; i < unitWorker.units.size(); i++) {
                 if (unitWorker.units.get(i).contains(unit)) {
