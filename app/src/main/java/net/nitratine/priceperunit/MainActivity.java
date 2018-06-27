@@ -25,9 +25,11 @@ public class MainActivity extends AppCompatActivity {
     Spinner unitTypeSpinner;
     Units unitWorker = new Units();
 
+    // flags
     String currentCurrencySymbol;
     int currentRounding;
     boolean dontSaveDataFlag = false;
+    private boolean userIsInteracting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,18 +49,6 @@ public class MainActivity extends AppCompatActivity {
         String[] items = unitWorker.unitTypes.toArray(new String[0]);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         unitTypeSpinner.setAdapter(adapter);
-
-        unitTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                unitTypeChanged();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
 
         ItemStorage is = new ItemStorage(this);
         ArrayList<ItemStructure> data = is.getData();
@@ -80,6 +70,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 generateResults();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        unitTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (userIsInteracting) {
+                    unitTypeChanged(false);
+                } else {
+                    unitTypeChanged(true);
+                }
             }
 
             @Override
@@ -135,6 +141,12 @@ public class MainActivity extends AppCompatActivity {
                 itemModified(itemLayout.getChildAt(i));
             }
         }
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        userIsInteracting = true;
     }
 
     protected void addItem(View view) {
@@ -372,10 +384,12 @@ public class MainActivity extends AppCompatActivity {
         generateResults();
     }
 
-    protected void unitTypeChanged() {
+    protected void unitTypeChanged(boolean initial) {
         // When the main unit type is changed, assign new units to items
-        for (int i = 0; i < itemLayout.getChildCount(); i++) {
-            setUnitOptions(itemLayout.getChildAt(i));
+        if (!initial) {
+            for (int i = 0; i < itemLayout.getChildCount(); i++) {
+                setUnitOptions(itemLayout.getChildAt(i));
+            }
         }
 
         String unitType = unitTypeSpinner.getSelectedItem().toString();
