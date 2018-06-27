@@ -37,7 +37,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
@@ -45,7 +44,6 @@
                         app:srcCompat="@drawable/currency" />
 
                     <TextView
-                        android:id="@+id/textView6"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.57"
@@ -56,7 +54,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/currencyValueTextEdit"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
@@ -80,7 +78,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView2"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
@@ -88,7 +85,6 @@
                         app:srcCompat="@drawable/rounding" />
 
                     <TextView
-                        android:id="@+id/textView11"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.57"
@@ -99,7 +95,7 @@
                         android:textSize="18sp" />
 
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/roundingValueSpinner"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
@@ -115,7 +111,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
@@ -123,7 +118,6 @@
                         app:srcCompat="@drawable/results" />
 
                     <TextView
-                        android:id="@+id/textView9"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.57"
@@ -134,7 +128,7 @@
                         android:textSize="18sp" />
 
                     <Switch
-                        android:id="@+id/switch1"
+                        android:id="@+id/showResultsValueSwitch"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
@@ -151,7 +145,6 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView31"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
@@ -159,7 +152,6 @@
                         app:srcCompat="@drawable/data" />
 
                     <TextView
-                        android:id="@+id/textView91"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.57"
@@ -170,7 +162,7 @@
                         android:textSize="18sp" />
 
                     <Switch
-                        android:id="@+id/switch11"
+                        android:id="@+id/rememberDataValueSwitch"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_marginRight="20dp"
@@ -197,14 +189,12 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:id="@+id/imageView311"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
                         app:srcCompat="@drawable/version_white" />
 
                     <TextView
-                        android:id="@+id/textView911"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.87"
@@ -225,17 +215,16 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:onClick="rate"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView3111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.13"
                             app:srcCompat="@drawable/star_white" />
 
                         <TextView
-                            android:id="@+id/textView9111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.87"
@@ -245,7 +234,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
-
                 </com.balysv.materialripple.MaterialRippleLayout>
 
                 <com.balysv.materialripple.MaterialRippleLayout
@@ -258,17 +246,16 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:onClick="bugReport"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView31111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.13"
                             app:srcCompat="@drawable/bug_white" />
 
                         <TextView
-                            android:id="@+id/textView91111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.87"
@@ -278,7 +265,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
-
                 </com.balysv.materialripple.MaterialRippleLayout>
             </LinearLayout>
 
@@ -300,17 +286,16 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:onClick="developerSite"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView311111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.13"
                             app:srcCompat="@drawable/developer_white" />
 
                         <TextView
-                            android:id="@+id/textView911111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.87"
@@ -320,7 +305,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
-
                 </com.balysv.materialripple.MaterialRippleLayout>
 
                 <com.balysv.materialripple.MaterialRippleLayout
@@ -333,17 +317,16 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
+                        android:onClick="licenses"
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:id="@+id/imageView3111111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.13"
                             app:srcCompat="@drawable/license_white" />
 
                         <TextView
-                            android:id="@+id/textView9111111"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="0.87"
@@ -353,7 +336,6 @@
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
-
                 </com.balysv.materialripple.MaterialRippleLayout>
 
             </LinearLayout>

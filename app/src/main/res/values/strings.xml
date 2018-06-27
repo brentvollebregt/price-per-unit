@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">Price Per Unit</string>
+    <string name="contact_email">nitratine.net@gmail.com</string>
+    <string name="play_store_location">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
+    <string name="developer_site_url">https://nitratine.net/</string>
+    <string name="licenses_html"><![CDATA[
+    <html>
+    <head>
+        <style>
+            body {
+            font-family: sans-serif;
+            }
+            pre {
+            background-color: #eeeeee;
+            padding: 1em;
+            white-space: pre-wrap;
+            }
+        </style>
+    </head>
+    <body>
+
+    <h3>
+        Apache License
+        <br/>
+        Version 2.0, January 2004
+    </h3>
+    <ul>
+        <li>
+            <b>material-design-icons</b>
+            <br/>
+             Copyright &copy; 2014, Google
+        </li>
+        <li>
+            <b>material-ripple</b>
+            <br/>
+             Copyright &copy; 2015, Balys Valentukevicius
+        </li>
+    </ul>
+    <pre>
+        Licensed under the Apache License, Version 2.0 (the License);
+        you may not use this file except in compliance with the License.
+        You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+        Unless required by applicable law or agreed to in writing, software
+        distributed under the License is distributed on an AS IS BASIS,
+        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+        See the License for the specific language governing permissions and
+        limitations under the License.
+    </pre>
+    </body>
+    </html>
+    ]]></string>
 </resources>
