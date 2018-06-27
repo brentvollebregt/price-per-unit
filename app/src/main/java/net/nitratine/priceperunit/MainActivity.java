@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Units unitWorker = new Units();
 
     String currentCurrencySymbol;
+    int currentRounding;
     boolean dontSaveDataFlag = false;
 
     @Override
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
         Settings.pullSettings();
 
         currentCurrencySymbol = Settings.currencySymbol;
+        currentRounding = Settings.rounding;
 
         itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
@@ -127,7 +129,12 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.resultsRoot).setVisibility(View.GONE);
         }
 
-        generateResults();
+        if (currentRounding != Settings.rounding) {
+            currentRounding = Settings.rounding;
+            for (int i = 0; i < itemLayout.getChildCount(); i++) {
+                itemModified(itemLayout.getChildAt(i));
+            }
+        }
     }
 
     protected void addItem(View view) {
