@@ -407,22 +407,22 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        Double lowestValue;
-        int lowestItemIndex;
+        Double bestValue;
+        int bestValueIndex;
         while (itemTiles.size() > 0) {
-            lowestValue = getBasedItemValue(itemTiles.get(0));
-            lowestItemIndex = 0;
+            bestValue = getBasedItemValue(itemTiles.get(0));
+            bestValueIndex = 0;
             for (int i = 1; i < itemTiles.size(); i++) {
-                if (getBasedItemValue(itemTiles.get(i)) < lowestValue) {
-                    lowestValue = getBasedItemValue(itemTiles.get(i));
-                    lowestItemIndex = i;
+                if (getBasedItemValue(itemTiles.get(i)) > bestValue) {
+                    bestValue = getBasedItemValue(itemTiles.get(i));
+                    bestValueIndex = i;
                 }
             }
             View inflatedView = View.inflate(this, R.layout.results_item, results);
             recentlyAdded = (LinearLayout) results.getChildAt(results.getChildCount() - 1);
-            ( (TextView) recentlyAdded.findViewById(R.id.resultItemName) ).setText(( (EditText) itemTiles.get(lowestItemIndex).findViewById(R.id.nameEditText) ).getText().toString());
-            ( (TextView) recentlyAdded.findViewById(R.id.resultItemValue) ).setText(roundToString(unitWorker.convert(baseUnit, requestedUnit, lowestValue)) + requestedUnit + "/" + Settings.currencySymbol);
-            itemTiles.remove(lowestItemIndex);
+            ( (TextView) recentlyAdded.findViewById(R.id.resultItemName) ).setText(( (EditText) itemTiles.get(bestValueIndex).findViewById(R.id.nameEditText) ).getText().toString());
+            ( (TextView) recentlyAdded.findViewById(R.id.resultItemValue) ).setText(roundToString(unitWorker.convert(baseUnit, requestedUnit, bestValue)) + requestedUnit + "/" + Settings.currencySymbol);
+            itemTiles.remove(bestValueIndex);
         }
     }
 
