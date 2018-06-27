@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.resultsRoot).setVisibility(View.GONE);
         }
 
+        generateResults();
     }
 
     protected void addItem(View view) {
@@ -445,7 +446,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String roundToString(Double value) {
-        DecimalFormat df = new DecimalFormat("#.####");
+        StringBuilder format = new StringBuilder("#.#");
+        for (int i = 0; i < Settings.rounding - 1; i++) {
+            format.append("#");
+        }
+
+        DecimalFormat df = new DecimalFormat(format.toString());
         df.setRoundingMode(RoundingMode.CEILING);
         return df.format(value);
     }
