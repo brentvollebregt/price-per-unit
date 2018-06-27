@@ -5,9 +5,17 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Switch;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -18,7 +26,66 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Settings & About");
 
-        // TODO Setup watchers (that save and export data)
+        final EditText currencyValueTextEdit = (EditText) findViewById(R.id.currencyValueTextEdit);
+        final Spinner roundingValueSpinner = (Spinner) findViewById(R.id.roundingValueSpinner);
+        final Switch showResultsValueSwitch = (Switch) findViewById(R.id.showResultsValueSwitch);
+        final Switch rememberDataValueSwitch = (Switch) findViewById(R.id.rememberDataValueSwitch);
+
+        String[] items = new String[] {"1", "2", "3", "4", "5", "6"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
+        roundingValueSpinner.setAdapter(adapter);
+
+        currencyValueTextEdit.setText(Settings.currencySymbol);
+        roundingValueSpinner.setSelection(adapter.getPosition(String.valueOf(Settings.rounding)));
+        showResultsValueSwitch.setChecked(Settings.showResultsTile);
+        rememberDataValueSwitch.setChecked(Settings.rememberData);
+
+        currencyValueTextEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                Settings.currencySymbol = currencyValueTextEdit.getText().toString();
+                Settings.pushSettings();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        roundingValueSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Settings.rounding = Integer.parseInt(roundingValueSpinner.getSelectedItem().toString());
+                Settings.pushSettings();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        showResultsValueSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Settings.showResultsTile = showResultsValueSwitch.isChecked();
+                Settings.pushSettings();
+            }
+        });
+
+        rememberDataValueSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Settings.rememberData = rememberDataValueSwitch.isChecked();
+                Settings.pushSettings();
+            }
+        });
     }
 
     @Override
