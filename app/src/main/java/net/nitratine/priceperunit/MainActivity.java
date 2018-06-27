@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
             overridePendingTransition(0, 0);
             startActivity(intent);
+            return;
         }
 
         if (Settings.showResultsTile) {
