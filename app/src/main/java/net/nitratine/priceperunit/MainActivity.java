@@ -120,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
             startActivity(intent);
         }
+
+        if (Settings.showResultsTile) {
+            findViewById(R.id.resultsRoot).setVisibility(View.VISIBLE);
+        } else {
+            findViewById(R.id.resultsRoot).setVisibility(View.GONE);
+        }
+
     }
 
     protected void addItem(View view) {
