@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     Spinner unitTypeSpinner;
     Units unitWorker = new Units();
 
+    String currentCurrencySymbol;
+    boolean dontSaveDataFlag = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         Settings.setUp(this);
         Settings.pullSettings();
+
+        currentCurrencySymbol = Settings.currencySymbol;
 
         itemLayout = (LinearLayout) findViewById(R.id.itemLayout);
         unitTypeSpinner = (Spinner) findViewById(R.id.unitTypeSpnr);
@@ -83,15 +88,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
+
+        if (dontSaveDataFlag) { return; }
 
         ArrayList<ItemStructure> data = new ArrayList<ItemStructure>();
         for (int i = 0; i < itemLayout.getChildCount(); i++) {
             ItemStructure item = new ItemStructure();
             LinearLayout itemTile = (LinearLayout) itemLayout.getChildAt(i);
             item.name = ( (EditText) itemTile.findViewById(R.id.nameEditText) ).getText().toString();
-            item.price = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+            item.price = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
             item.quantity = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
             item.size = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString();
             item.unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
@@ -100,6 +107,19 @@ public class MainActivity extends AppCompatActivity {
 
         ItemStorage is = new ItemStorage(this);
         is.insertData(data);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (!currentCurrencySymbol.equals(Settings.currencySymbol)) {
+            dontSaveDataFlag = true;
+            Intent intent = new Intent(this, MainActivity.class);
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(intent);
+        }
     }
 
     protected void addItem(View view) {
@@ -168,11 +188,11 @@ public class MainActivity extends AppCompatActivity {
                 if (value.compareTo("") == 0) {
                     return;
                 }
-                if (!value.startsWith("$")) {
-                    priceEditText.setText("$" + value);
+                if (!value.startsWith(Settings.currencySymbol)) {
+                    priceEditText.setText(Settings.currencySymbol + value);
                     priceEditText.setSelection(value.length() + 1);
                 }
-                if (value.replace("$", "").compareTo("") == 0) {
+                if (value.replace(Settings.currencySymbol, "").compareTo("") == 0) {
                     priceEditText.setText("");
                 }
                 itemModified(recentlyAdded);
@@ -298,10 +318,10 @@ public class MainActivity extends AppCompatActivity {
         if (getBasedItemValueValid(itemTile)) {
             Double baseUnitValue = getBasedItemValue(itemTile);
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
-            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitWorker.convert(unitWorker.getBaseUnit(unit), unit, baseUnitValue)) + unit + "/$");
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(roundToString(unitWorker.convert(unitWorker.getBaseUnit(unit), unit, baseUnitValue)) + unit + "/" + Settings.currencySymbol);
         } else {
             String unit = ((Spinner) itemTile.findViewById(R.id.unitSpnr)).getSelectedItem().toString();
-            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/$");
+            ((TextView) itemTile.findViewById(R.id.ratiotextView)).setText(unit + "/" + Settings.currencySymbol);
         }
 
         generateResults();
@@ -386,14 +406,14 @@ public class MainActivity extends AppCompatActivity {
             View inflatedView = View.inflate(this, R.layout.results_item, results);
             recentlyAdded = (LinearLayout) results.getChildAt(results.getChildCount() - 1);
             ( (TextView) recentlyAdded.findViewById(R.id.resultItemName) ).setText(( (EditText) itemTiles.get(lowestItemIndex).findViewById(R.id.nameEditText) ).getText().toString());
-            ( (TextView) recentlyAdded.findViewById(R.id.resultItemValue) ).setText(roundToString(unitWorker.convert(baseUnit, requestedUnit, lowestValue)) + requestedUnit + "/$");
+            ( (TextView) recentlyAdded.findViewById(R.id.resultItemValue) ).setText(roundToString(unitWorker.convert(baseUnit, requestedUnit, lowestValue)) + requestedUnit + "/" + Settings.currencySymbol);
             itemTiles.remove(lowestItemIndex);
         }
     }
 
     private boolean getBasedItemValueValid(View view) {
         LinearLayout itemTile = (LinearLayout) view;
-        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
         return priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0;
@@ -404,7 +424,7 @@ public class MainActivity extends AppCompatActivity {
             return 0.0;
         }
         LinearLayout itemTile = (LinearLayout) view;
-        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace("$", "");
+        String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
 
