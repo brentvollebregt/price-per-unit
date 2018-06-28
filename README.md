@@ -5,6 +5,10 @@
     <img src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/FeatureGraphic.png?raw=true" alt="Header Image">
 </div>
 
+<div style="text-align: center">
+    <a href="https://play.google.com/store/apps/details?id=net.nitratine.priceperunit">Download From Google Play</a> | <a href="https://nitratine.net/price-per-unit/">The Article on my Site</a>
+</div>
+
 ## Introduction
 I really wanted some more practice with the Android SDK so I decided to make something that I would have liked to have.
 
