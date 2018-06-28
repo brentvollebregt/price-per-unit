@@ -4,7 +4,7 @@ A simple Android app that helps you compare prices of similar products
 <p align="center">A simple Android app that helps you compare prices of similar products</p>
 
 <div align="center">
-    <img src="https://raw.githubusercontent.com/brentvollebregt/price-per-unit/master/published_graphics/FeatureGraphic.png" alt="Header Image">
+    <img src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/FeatureGraphic.png?raw=true" alt="Header Image">
 </div>
 
 ## Introduction
@@ -17,10 +17,10 @@ This app is ideal to find the best price in supermarkets but will work just in w
 ## Screenshots
 
 <div style="text-align: center">
-	<img style="width: 24%; display: inline;" src="https://raw.githubusercontent.com/brentvollebregt/price-per-unit/master/published_graphics/Gallery1.png" alt="Gallery Item 1">
-	<img style="width: 24%; display: inline;" src="https://raw.githubusercontent.com/brentvollebregt/price-per-unit/master/published_graphics/Gallery2.png" alt="Gallery Item 2">
-	<img style="width: 24%; display: inline;" src="https://raw.githubusercontent.com/brentvollebregt/price-per-unit/master/published_graphics/Gallery3.png" alt="Gallery Item 3">
-	<img style="width: 24%; display: inline;" src="https://raw.githubusercontent.com/brentvollebregt/price-per-unit/master/published_graphics/Gallery4.png" alt="Gallery Item 4">
+	<img style="width: 24%; display: inline;" src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/Gallery1.png?raw=true" alt="Gallery Item 1">
+	<img style="width: 24%; display: inline;" src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/Gallery2.png?raw=true" alt="Gallery Item 2">
+	<img style="width: 24%; display: inline;" src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/Gallery3.png?raw=true" alt="Gallery Item 3">
+	<img style="width: 24%; display: inline;" src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/Gallery4.png?raw=true" alt="Gallery Item 4">
 </div>
 
 
