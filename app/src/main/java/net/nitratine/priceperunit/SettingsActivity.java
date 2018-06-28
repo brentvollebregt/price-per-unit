@@ -86,6 +86,34 @@ public class SettingsActivity extends AppCompatActivity {
                 Settings.pushSettings();
             }
         });
+
+        findViewById(R.id.rateLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rate(view);
+            }
+        });
+
+        findViewById(R.id.bugReportLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bugReport(view);
+            }
+        });
+
+        findViewById(R.id.developerSiteLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                developerSite(view);
+            }
+        });
+
+        findViewById(R.id.licensesLayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                licenses(view);
+            }
+        });
     }
 
     @Override

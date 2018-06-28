@@ -71,7 +71,6 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.7"
-                    android:onClick="clearItems"
                     android:text="Clear"
                     android:textColor="@android:color/black" />
 

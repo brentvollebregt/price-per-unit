@@ -108,6 +108,13 @@ public class MainActivity extends AppCompatActivity {
                 openSettings(view);
             }
         });
+
+        findViewById(R.id.clearBtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearItems(view);
+            }
+        });
     }
 
     @Override

@@ -200,7 +200,7 @@
                         android:layout_weight="0.87"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Version 1.2.1"
+                        android:text="Version 1.2.2"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -211,11 +211,11 @@
                     app:mrl_rippleColor="#FFFFFF">
 
                     <LinearLayout
+                        android:id="@+id/rateLayout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:onClick="rate"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -242,11 +242,11 @@
                     app:mrl_rippleColor="#FFFFFF">
 
                     <LinearLayout
+                        android:id="@+id/bugReportLayout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:onClick="bugReport"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -282,11 +282,11 @@
                     app:mrl_rippleColor="#FFFFFF">
 
                     <LinearLayout
+                        android:id="@+id/developerSiteLayout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:onClick="developerSite"
                         android:orientation="horizontal">
 
                         <ImageView
@@ -313,11 +313,11 @@
                     app:mrl_rippleColor="#FFFFFF">
 
                     <LinearLayout
+                        android:id="@+id/licensesLayout"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginTop="4dp"
                         android:layout_weight="1"
-                        android:onClick="licenses"
                         android:orientation="horizontal">
 
                         <ImageView
