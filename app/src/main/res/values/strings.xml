@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Price Per Unit</string>
-    <string name="contact_email">nitratine.net@gmail.com</string>
+    <string name="contact_email">brent@nitratine.net</string>
     <string name="play_store_location">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
     <string name="developer_site_url">https://nitratine.net/</string>
     <string name="licenses_html"><![CDATA[
