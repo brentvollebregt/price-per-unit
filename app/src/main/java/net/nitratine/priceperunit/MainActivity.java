@@ -5,14 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -220,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         setUnitOptions(recentlyAdded);
         unitSpinner.setSelection(getSpinnerIndex(unitSpinner, unit));
 
-        // Setup modification watcher for the three value inputs
+        // Whenever a value is modified, re-calculate
         TextWatcher modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -234,23 +232,28 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String value = priceEditText.getText().toString();
-                if (value.compareTo("") == 0) {
-                    return;
-                }
-                if (!value.startsWith(Settings.currencySymbol)) {
-                    priceEditText.setText(Settings.currencySymbol + value);
-                    priceEditText.setSelection(value.length() + 1);
-                }
-                if (value.replace(Settings.currencySymbol, "").compareTo("") == 0) {
-                    priceEditText.setText("");
-                }
                 itemModified(recentlyAdded);
-
             }
         };
         priceEditText.addTextChangedListener(modificationWatcher);
 
+        // When selecting an input, remove the currency symbol. Show onblur
+        priceEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            EditText editText = priceEditText;
+
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    String value = editText.getText().toString().replace(Settings.currencySymbol, "");
+                    editText.setText(value, TextView.BufferType.EDITABLE);
+                } else {
+                    String value = editText.getText().toString();
+                    editText.setText(Settings.currencySymbol + value, TextView.BufferType.EDITABLE);
+                }
+            }
+        });
+
+        // When selecting an input, hide the currency symbol. Show onblur
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -269,6 +272,7 @@ public class MainActivity extends AppCompatActivity {
         };
         quantityEditText.addTextChangedListener(modificationWatcher);
 
+        // When selecting an input, hide the currency symbol. Show onblur
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -282,23 +286,29 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String unit = unitSpinner.getSelectedItem().toString();
-                String value = sizePerQtyEditText.getText().toString();
-                if (value.compareTo("") == 0) {
-                    return;
-                }
-                if (!value.endsWith(unit)) {
-
-                    sizePerQtyEditText.setText(value.replaceAll("[a-z]|[A-Z]", "") + unit);
-                    sizePerQtyEditText.setSelection(unitSpinner.getSelectedItem().toString().length() + 1 - unit.length());
-                }
-                if (value.replaceAll("[a-z]|[A-Z]", "").compareTo("") == 0) {
-                    sizePerQtyEditText.setText("");
-                }
                 itemModified(recentlyAdded);
             }
         };
         sizePerQtyEditText.addTextChangedListener(modificationWatcher);
+
+        // When selecting an input, remove the units. Show onblur
+        sizePerQtyEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            EditText editText = sizePerQtyEditText;
+            Spinner unit_spinner = unitSpinner;
+
+            @Override
+            public void onFocusChange(View view, boolean hasFocus) {
+                if (hasFocus) {
+                    String unit = unit_spinner.getSelectedItem().toString();
+                    String value = editText.getText().toString().replace(unit, "");
+                    editText.setText(value, TextView.BufferType.EDITABLE);
+                } else {
+                    String value = editText.getText().toString();
+                    String unit = unit_spinner.getSelectedItem().toString();
+                    editText.setText(value + unit, TextView.BufferType.EDITABLE);
+                }
+            }
+        });
 
         // Setup a watcher for the change of unit
         unitSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -306,7 +316,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemModified(recentlyAdded);
                 if ("".compareTo(sizePerQtyEditText.getText().toString()) != 0) {
-                    sizePerQtyEditText.setText(sizePerQtyEditText.getText().toString() + "Z");
+                    String currentValue = sizePerQtyEditText.getText().toString();
+                    String value = currentValue.replaceAll("[a-z]|[A-Z]", "");
+                    String unit = unitSpinner.getSelectedItem().toString();
+                    sizePerQtyEditText.setText(value + unit);
                 }
             }
 
@@ -321,13 +334,15 @@ public class MainActivity extends AppCompatActivity {
             nameEditText.setText(name);
         }
         if (price.compareTo("") != 0) {
-            priceEditText.setText(price);
+            // Add the price provided and prepend the currency symbol
+            priceEditText.setText(Settings.currencySymbol + price);
         }
         if (quantity.compareTo("") != 0) {
             quantityEditText.setText(quantity);
         }
         if (size.compareTo("") != 0) {
-            sizePerQtyEditText.setText(size);
+            // Add the size provided and append the unit
+            sizePerQtyEditText.setText(size + unitSpinner.getSelectedItem().toString());
         }
 
         // Setup watcher for name change

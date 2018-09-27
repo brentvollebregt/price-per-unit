@@ -26,6 +26,7 @@
             android:id="@+id/mainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusableInTouchMode="true"
             android:orientation="vertical">
 
             <TextView
@@ -89,8 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                app:mrl_rippleColor="#FFFFFF"
                 app:mrl_rippleBackground="@color/colorPrimary"
+                app:mrl_rippleColor="#FFFFFF"
                 app:mrl_rippleDelayClick="false">
 
                 <RelativeLayout
@@ -213,10 +214,10 @@
             <com.balysv.materialripple.MaterialRippleLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:layout_marginBottom="4dp"
-                app:mrl_rippleColor="#FFFFFF"
+                android:layout_marginTop="4dp"
                 app:mrl_rippleBackground="@color/colorPrimary"
+                app:mrl_rippleColor="#FFFFFF"
                 app:mrl_rippleDelayClick="false">
 
                 <RelativeLayout
