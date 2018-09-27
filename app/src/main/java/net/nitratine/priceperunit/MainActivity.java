@@ -218,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
         setUnitOptions(recentlyAdded);
         unitSpinner.setSelection(getSpinnerIndex(unitSpinner, unit));
 
-        // Whenever a value is modified, re-calculate
+        // Whenever a the price is modified, re-calculate
         TextWatcher modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -237,7 +237,7 @@ public class MainActivity extends AppCompatActivity {
         };
         priceEditText.addTextChangedListener(modificationWatcher);
 
-        // When selecting an input, remove the currency symbol. Show onblur
+        // When selecting the price, remove the currency symbol. Show onblur
         priceEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             EditText editText = priceEditText;
 
@@ -248,12 +248,14 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText(value, TextView.BufferType.EDITABLE);
                 } else {
                     String value = editText.getText().toString();
-                    editText.setText(Settings.currencySymbol + value, TextView.BufferType.EDITABLE);
+                    if (!value.equals("")) {
+                        editText.setText(Settings.currencySymbol + value, TextView.BufferType.EDITABLE);
+                    }
                 }
             }
         });
 
-        // When selecting an input, hide the currency symbol. Show onblur
+        // When the quantity is modified, re-calculate
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity {
         };
         quantityEditText.addTextChangedListener(modificationWatcher);
 
-        // When selecting an input, hide the currency symbol. Show onblur
+        // When the size is modified, re-calculate
         modificationWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -291,7 +293,7 @@ public class MainActivity extends AppCompatActivity {
         };
         sizePerQtyEditText.addTextChangedListener(modificationWatcher);
 
-        // When selecting an input, remove the units. Show onblur
+        // When setting the size, remove the units. Show onblur
         sizePerQtyEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             EditText editText = sizePerQtyEditText;
             Spinner unit_spinner = unitSpinner;
@@ -304,8 +306,10 @@ public class MainActivity extends AppCompatActivity {
                     editText.setText(value, TextView.BufferType.EDITABLE);
                 } else {
                     String value = editText.getText().toString();
-                    String unit = unit_spinner.getSelectedItem().toString();
-                    editText.setText(value + unit, TextView.BufferType.EDITABLE);
+                    if (!value.equals("")) {
+                        String unit = unit_spinner.getSelectedItem().toString();
+                        editText.setText(value + unit, TextView.BufferType.EDITABLE);
+                    }
                 }
             }
         });
