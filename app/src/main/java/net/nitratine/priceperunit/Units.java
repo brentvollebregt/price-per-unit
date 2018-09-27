@@ -19,9 +19,15 @@ public class Units {
         units_weight.add("g");
         units_weight_relativity.add(1.0);
         units_weight.add("kg");
-        units_weight_relativity.add(0.001); // 5kg / 0.001 = 5000g
+        units_weight_relativity.add(0.001);
         units_weight.add("tonne");
         units_weight_relativity.add(0.000001);
+        units_weight.add("oz"); // Ounce
+        units_weight_relativity.add(0.035274);
+        units_weight.add("lb"); // Pound
+        units_weight_relativity.add(0.0022046249999752);
+        units_weight.add("st"); // Stone
+        units_weight_relativity.add(0.00015747321428394284561);
         units.add(units_weight); // Match the first index as "Weight" is in unitTypes
         unitBaseRelativity.add(units_weight_relativity);
 
@@ -31,6 +37,18 @@ public class Units {
         units_volume_relativity.add(1.0);
         units_volume.add("ml");
         units_volume_relativity.add(1000.0);
+        units_volume.add("fl oz (US)"); // fluid oz (US)
+        units_volume_relativity.add(33.814042178720001175);
+        units_volume.add("pt (US)"); // pint (US)
+        units_volume_relativity.add(2.1133776361700000734);
+        units_volume.add("gal (US)"); // gallon (US)
+        units_volume_relativity.add(0.26417220452125);
+        units_volume.add("fl oz (Imp)"); // fluid oz (Imperial)
+        units_volume_relativity.add(35.195100000219895264);
+        units_volume.add("pt (Imp)"); // pint (Imperial)
+        units_volume_relativity.add(2.0000011519999958409);
+        units_volume.add("gal (Imp)"); // gallon (Imperial)
+        units_volume_relativity.add(0.21996937500137433985);
         units.add(units_volume);
         unitBaseRelativity.add(units_volume_relativity);
 
@@ -44,6 +62,12 @@ public class Units {
         units_length_relativity.add(100.0);
         units_length.add("km");
         units_length_relativity.add(0.001);
+        units_length.add("in"); // inch
+        units_length_relativity.add(39.3701);
+        units_length.add("yd"); // yard
+        units_length_relativity.add(1.093613888889);
+        units_length.add("mi"); // mile
+        units_length_relativity.add(0.00062137152777784086452);
         units.add(units_length);
         unitBaseRelativity.add(units_length_relativity);
 

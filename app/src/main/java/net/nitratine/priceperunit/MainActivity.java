@@ -317,7 +317,7 @@ public class MainActivity extends AppCompatActivity {
                 itemModified(recentlyAdded);
                 if ("".compareTo(sizePerQtyEditText.getText().toString()) != 0) {
                     String currentValue = sizePerQtyEditText.getText().toString();
-                    String value = currentValue.replaceAll("[a-z]|[A-Z]", "");
+                    String value = currentValue.replaceAll("[^0-9]", "");
                     String unit = unitSpinner.getSelectedItem().toString();
                     sizePerQtyEditText.setText(value + unit);
                 }
@@ -482,7 +482,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemTile = (LinearLayout) view;
         String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
-        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[^0-9]", "");
         return priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0;
     }
 
@@ -493,7 +493,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemTile = (LinearLayout) view;
         String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
-        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[a-z]|[A-Z]", "");
+        String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[^0-9]", "");
 
         Double price = Double.parseDouble(priceText);
         Double quantity = Double.parseDouble(quantityText);
