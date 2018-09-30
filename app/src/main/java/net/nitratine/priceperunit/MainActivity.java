@@ -81,6 +81,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (userIsInteracting) {
+                    if (getCurrentFocus() != null) {
+                        getCurrentFocus().clearFocus();
+                    }
                     unitTypeChanged(false);
                 } else {
                     unitTypeChanged(true);
@@ -319,7 +322,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 itemModified(recentlyAdded);
-                if ("".compareTo(sizePerQtyEditText.getText().toString()) != 0) {
+
+                if (getCurrentFocus() != null) {
+                    getCurrentFocus().clearFocus();
+                }
+
+                if (!"".equals(sizePerQtyEditText.getText().toString())) {
                     String currentValue = sizePerQtyEditText.getText().toString();
                     String value = currentValue.replaceAll("[^0-9]", "");
                     String unit = unitSpinner.getSelectedItem().toString();
