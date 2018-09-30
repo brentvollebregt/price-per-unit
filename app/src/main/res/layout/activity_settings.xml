@@ -49,7 +49,7 @@
                         android:layout_weight="0.57"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Currently Symbol"
+                        android:text="Currency Symbol"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
