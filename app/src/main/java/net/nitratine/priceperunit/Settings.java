@@ -23,7 +23,7 @@ public class Settings {
     public static void pullSettings() {
         currencySymbol = sp_get.getString("currencySymbol", "$");
         showResultsTile = sp_get.getBoolean("showResultsTile", true);
-        rounding = sp_get.getInt("rounding", 4);
+        rounding = sp_get.getInt("rounding", 2);
         rememberData = sp_get.getBoolean("rememberData", true);
     }
 
