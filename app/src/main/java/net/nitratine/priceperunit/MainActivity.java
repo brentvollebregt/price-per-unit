@@ -409,7 +409,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
         itemLayout.removeView(itemBeingMoved);
-        itemLayout.addView(itemBeingMoved, index - 1);
+        itemLayout.addView(itemBeingMoved, Math.max(index - 1, 0)); // Make sure we don't put an item in -1
     }
 
     protected void moveItemDown(View view) {
@@ -417,7 +417,7 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout itemBeingMoved = (LinearLayout) view.getParent().getParent().getParent();
         int index = itemLayout.indexOfChild(itemBeingMoved);
         itemLayout.removeView(itemBeingMoved);
-        itemLayout.addView(itemBeingMoved, index + 1);
+        itemLayout.addView(itemBeingMoved, Math.min(index + 1, itemLayout.getChildCount()));
     }
 
     protected void deleteItem(View view) {
