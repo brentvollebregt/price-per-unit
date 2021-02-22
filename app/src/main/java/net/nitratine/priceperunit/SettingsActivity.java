@@ -16,6 +16,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
+import android.widget.TextView;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
         final Spinner roundingValueSpinner = (Spinner) findViewById(R.id.roundingValueSpinner);
         final Switch showResultsValueSwitch = (Switch) findViewById(R.id.showResultsValueSwitch);
         final Switch rememberDataValueSwitch = (Switch) findViewById(R.id.rememberDataValueSwitch);
+        final TextView versionTag = findViewById(R.id.versionTag);
 
         String[] items = new String[] {"1", "2", "3", "4", "5", "6"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
@@ -39,6 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         roundingValueSpinner.setSelection(adapter.getPosition(String.valueOf(Settings.rounding)));
         showResultsValueSwitch.setChecked(Settings.showResultsTile);
         rememberDataValueSwitch.setChecked(Settings.rememberData);
+        versionTag.setText("Version " + BuildConfig.VERSION_NAME);
 
         currencyValueTextEdit.addTextChangedListener(new TextWatcher() {
             @Override
