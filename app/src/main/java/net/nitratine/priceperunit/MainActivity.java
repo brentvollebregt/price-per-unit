@@ -329,7 +329,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (!"".equals(sizePerQtyEditText.getText().toString())) {
                     String currentValue = sizePerQtyEditText.getText().toString();
-                    String value = currentValue.replaceAll("[^0-9]", "");
+                    String value = currentValue.replaceAll("[^0-9.]", "");
                     String unit = unitSpinner.getSelectedItem().toString();
                     sizePerQtyEditText.setText(value + unit);
                 }
