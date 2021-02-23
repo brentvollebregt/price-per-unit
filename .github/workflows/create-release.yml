@@ -24,7 +24,7 @@ jobs:
         uses: JantHsueh/get-apk-info-action@master
         id: apkInfo
         with:
-          apkPath: app/build/outputs/apk/release/app-release.apk
+          apkPath: app/release/app-release.apk
 
       - name: Echo Version Results
         run: |

@@ -40,7 +40,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
-                        android:tint="@android:color/white"
+                        app:tint="@android:color/white"
                         app:srcCompat="@drawable/currency" />
 
                     <TextView
@@ -81,7 +81,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
-                        android:tint="@android:color/white"
+                        app:tint="@android:color/white"
                         app:srcCompat="@drawable/rounding" />
 
                     <TextView
@@ -114,7 +114,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.13"
-                        android:tint="@android:color/white"
+                        app:tint="@android:color/white"
                         app:srcCompat="@drawable/results" />
 
                     <TextView
