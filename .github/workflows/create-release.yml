@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Fail if version already exists
-        run: exit 0
+        run: exit 1
         if: steps.checkTag.outputs.exists == 'true'
 
 #      - name: Sign App APK
@@ -50,8 +50,6 @@ jobs:
 #        env:
 #          // override default build-tools version (29.0.3) -- optional
 #          BUILD_TOOLS_VERSION: "29.0.2"
-
-        # TODO Create release
 
       # Create the release for this version
       - name: Create Release
