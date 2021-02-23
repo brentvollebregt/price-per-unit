@@ -1,0 +1,55 @@
+name: Build and Sign App and Create Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+
+      - name: Build App
+        run: bash ./gradlew build --stacktrace
+
+      - name: Get APK Version
+        uses: JantHsueh/get-apk-version-action@master
+        id: apkInfo
+        with:
+          apkPath: app/build/outputs/apk/release/app-release.apk
+
+      - name: Echo Version Results
+        run: |
+          echo "${{ steps.apkInfo.outputs.versionCode }}"
+          echo "${{ steps.apkInfo.outputs.versionNum }}"
+          echo "${{ steps.apkInfo.outputs.applicationId }}"
+          echo "${{ steps.apkInfo.outputs.name }}"
+
+#      - name: Sign App APK
+#        uses: r0adkll/sign-android-release@v1
+#        id: sign_app
+#        with:
+#          releaseDirectory: app/build/outputs/apk/release
+#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+#          alias: ${{ secrets.ALIAS }}
+#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+#          keyPassword: ${{ secrets.KEY_PASSWORD }}
+#        env:
+#          // override default build-tools version (29.0.3) -- optional
+#          BUILD_TOOLS_VERSION: "30.0.2"
+
+        # TODO Create release
+
+#      - name: Create Artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: Signed app bundle
+#          path: ${{steps.sign_app.outputs.signedReleaseFile}}
