@@ -24,7 +24,7 @@ jobs:
         uses: JantHsueh/get-apk-info-action@master
         id: apkInfo
         with:
-          apkPath: app/release/app-release.apk
+          apkPath: app/build/outputs/apk/release/app-release-unsigned.apk
 
       - name: Echo Version Results
         run: |
@@ -44,7 +44,7 @@ jobs:
 #          keyPassword: ${{ secrets.KEY_PASSWORD }}
 #        env:
 #          // override default build-tools version (29.0.3) -- optional
-#          BUILD_TOOLS_VERSION: "30.0.2"
+#          BUILD_TOOLS_VERSION: "29.0.2"
 
         # TODO Create release
 
