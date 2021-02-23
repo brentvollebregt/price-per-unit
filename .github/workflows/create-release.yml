@@ -38,18 +38,17 @@ jobs:
         run: exit 1
         if: steps.checkTag.outputs.exists == 'true'
 
-#      - name: Sign App APK
-#        uses: r0adkll/sign-android-release@v1
-#        id: sign_app
-#        with:
-#          releaseDirectory: app/build/outputs/apk/release
-#          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
-#          alias: ${{ secrets.ALIAS }}
-#          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
-#          keyPassword: ${{ secrets.KEY_PASSWORD }}
-#        env:
-#          // override default build-tools version (29.0.3) -- optional
-#          BUILD_TOOLS_VERSION: "29.0.2"
+      - name: Sign App APK
+        uses: r0adkll/sign-android-release@v1
+        id: sign_app
+        with:
+          releaseDirectory: app/build/outputs/apk/release
+          signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+          alias: ${{ secrets.ALIAS }}
+          keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+          keyPassword: ${{ secrets.KEY_PASSWORD }}
+        env:
+          BUILD_TOOLS_VERSION: "29.0.2"
 
       # Create the release for this version
       - name: Create Release
@@ -70,14 +69,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: app/build/outputs/apk/release/app-release-unsigned.apk
-          asset_name: app-release-unsigned.apk
+          asset_path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+          asset_name: app-release-signed.apk
           asset_content_type: application/vnd.android.package-archive
 
       - name: Create Artifact
         uses: actions/upload-artifact@v2
         with:
-          name: Unsigned app bundle
-          path: app/build/outputs/apk/release/app-release-unsigned.apk
-#          name: Signed app bundle
-#          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          name: Signed app bundle
+          path: ${{ steps.sign_app.outputs.signedReleaseFile }}
