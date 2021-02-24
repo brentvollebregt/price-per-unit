@@ -1,0 +1,18 @@
+Compare unlimited items to find the best price! Save money in a smart way.
+
+Simply give a name (optional), enter in the cost, amount and size of each item and the unit per dollar will be calculated. This then sorts those based off best value for you to easily find the best price! Three numbers is all that is required to get an accurate answer.
+
+This app is ideal to find the best price in supermarkets but will work just in well at other stores that sell the same type of items for different prices or you can even compare prices from different stores.
+
+Features include:
+
+* No permissions!
+* No Ads!
+* 4 unit types (Weight, Volume, Length and Pieces)
+* Easily change the currency symbol
+* Summary of calculated unit/$
+* Can view all items converted to one single unit
+* Remember data after the app is closed
+* Change rounding dp
+
+This app has no ads, requires no permissions, and collects no data.
