@@ -34,12 +34,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Fail if version already exists
-        run: exit 1
-        if: steps.checkTag.outputs.exists == 'true'
-
       - name: Sign App APK
         uses: r0adkll/sign-android-release@v1
+        if: steps.checkTag.outputs.exists == 'false'
         id: sign_app
         with:
           releaseDirectory: app/build/outputs/apk/release
@@ -52,8 +49,9 @@ jobs:
 
       # Create the release for this version
       - name: Create Release
-        id: create_release
         uses: actions/create-release@v1
+        if: steps.checkTag.outputs.exists == 'false'
+        id: create_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -65,6 +63,7 @@ jobs:
       # Upload the APK to the created release
       - name: Upload Built APK to Release
         uses: actions/upload-release-asset@v1
+        if: steps.checkTag.outputs.exists == 'false'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -75,6 +74,14 @@ jobs:
 
       - name: Create Artifact
         uses: actions/upload-artifact@v2
+        if: steps.checkTag.outputs.exists == 'false'
         with:
           name: Signed app bundle
           path: ${{ steps.sign_app.outputs.signedReleaseFile }}
+
+      - name: Create Artifact
+        uses: actions/upload-artifact@v2
+        if: steps.checkTag.outputs.exists == 'true'
+        with:
+          name: Unsigned app bundle
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
