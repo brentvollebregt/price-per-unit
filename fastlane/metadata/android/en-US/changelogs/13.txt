@@ -1,0 +1,1 @@
+No app changes - project metadata has been included in the repo to put app onto F-Droid.org.
