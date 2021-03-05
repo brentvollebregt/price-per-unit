@@ -495,6 +495,15 @@ public class MainActivity extends AppCompatActivity {
         String priceText = ( (EditText) itemTile.findViewById(R.id.priceEditText) ).getText().toString().replace(Settings.currencySymbol, "");
         String quantityText = ( (EditText) itemTile.findViewById(R.id.quantityEditText) ).getText().toString();
         String amountPerQtyText = ( (EditText) itemTile.findViewById(R.id.sizePerQtyEditText) ).getText().toString().replaceAll("[^0-9.,]", "");
+
+        try {
+            Double.parseDouble(priceText);
+            Double.parseDouble(quantityText);
+            Double.parseDouble(amountPerQtyText);
+        } catch (NumberFormatException e){
+            return false;
+        }
+
         return priceText.compareTo("") != 0 && quantityText.compareTo("") != 0 && amountPerQtyText.compareTo("") != 0;
     }
 
