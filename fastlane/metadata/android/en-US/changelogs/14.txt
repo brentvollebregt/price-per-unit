@@ -1,0 +1,3 @@
+* Make bug report button go to GitHub issues
+* Stop icons in add and settings buttons from blocking the buttons action
+* Fix app crashing when entering a "." in one field while the other two have values
