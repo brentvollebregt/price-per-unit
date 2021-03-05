@@ -3,6 +3,7 @@
     <string name="contact_email">brent@nitratine.net</string>
     <string name="play_store_location">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
     <string name="developer_site_url">https://nitratine.net/</string>
+    <string name="bug_reporting_url">https://github.com/brentvollebregt/price-per-unit/issues</string>
     <string name="licenses_html"><![CDATA[
     <html>
     <head>

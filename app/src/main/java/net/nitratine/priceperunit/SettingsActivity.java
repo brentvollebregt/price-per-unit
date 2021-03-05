@@ -137,11 +137,8 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     protected void bugReport(View view) {
-        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-                "mailto",getString(R.string.contact_email), null));
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Bug Report For Price Per Unit");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Describe the bug you found and how to reproduce it.");
-        startActivity(Intent.createChooser(emailIntent, "Send email..."));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.bug_reporting_url)));
+        startActivity(browserIntent);
     }
 
     protected void developerSite(View view) {
