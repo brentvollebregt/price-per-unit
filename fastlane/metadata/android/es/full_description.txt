@@ -1,0 +1,18 @@
+Compare un número ilimitado de artículos para encontrar el mejor precio. Ahorre dinero de forma inteligente.
+
+Sólo tienes que dar un nombre (opcional), introducir el coste, la cantidad y el tamaño de cada artículo y se calculará la unidad por dólar. A continuación, clasifica los artículos en función del mejor valor para que puedas encontrar fácilmente el mejor precio. Tres números es todo lo que se requiere para obtener una respuesta precisa.
+
+Esta aplicación es ideal para encontrar el mejor precio en los supermercados, pero funcionará también en otras tiendas que venden el mismo tipo de artículos a diferentes precios o incluso puede comparar los precios de diferentes tiendas.
+
+Las características incluyen:
+
+* ¡Sin permisos!
+* Sin anuncios.
+* 4 tipos de unidades (Peso, Volumen, Longitud y Piezas)
+* Cambio fácil del símbolo de la moneda
+* Resumen de la unidad calculada en $
+* Puede ver todos los artículos convertidos a una sola unidad
+* Recuerde los datos después de cerrar la aplicación
+* Cambiar el redondeo dp
+
+Esta aplicación no tiene anuncios, no requiere permisos, y no recoge datos.
