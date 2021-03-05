@@ -117,16 +117,12 @@
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 
-                        <ImageButton
-                            android:id="@+id/imageButton"
-                            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+                        <ImageView
+                            android:id="@+id/imageView2"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:adjustViewBounds="false"
-                            android:background="@android:color/transparent"
-                            android:cropToPadding="false"
-                            android:tint="@android:color/white"
+                            app:tint="@android:color/white"
                             app:srcCompat="@drawable/add_circle" />
 
                     </LinearLayout>
@@ -238,21 +234,17 @@
                             android:layout_height="match_parent"
                             android:layout_marginRight="10dp"
                             android:layout_weight="1"
-                            android:gravity="right|center"
+                            android:gravity="center|right"
                             android:text="Settings"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 
-                        <ImageButton
-                            android:id="@+id/SettingsImageButton"
-                            style="@android:style/Widget.DeviceDefault.Light.ImageButton"
+                        <ImageView
+                            android:id="@+id/imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:adjustViewBounds="false"
-                            android:background="@android:color/transparent"
-                            android:cropToPadding="false"
-                            android:tint="@android:color/white"
+                            app:tint="@android:color/white"
                             app:srcCompat="@drawable/settings" />
 
                     </LinearLayout>
