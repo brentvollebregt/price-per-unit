@@ -5,9 +5,14 @@
     <img src="https://github.com/brentvollebregt/price-per-unit/blob/master/published_graphics/FeatureGraphic.png?raw=true" alt="Header Image">
 </div>
 
-<div style="text-align: center">
-    <a href="https://play.google.com/store/apps/details?id=net.nitratine.priceperunit">Download From Google Play</a> | <a href="https://nitratine.net/price-per-unit/">The Article on my Site</a>
-</div>
+<p align="center">
+    <a href="https://f-droid.org/en/packages/net.nitratine.priceperunit/"><img src="https://nitratine.net/posts/price-per-unit/get-it-on-f-droid.png" alt="Get it on F-Droid" height="100"></a>
+    <a href="https://play.google.com/store/apps/details?id=net.nitratine.priceperunit"><img src="https://nitratine.net/posts/price-per-unit/get-it-on-google-play.png" alt="Get it on Google Play" height="100"></a>
+</p>
+
+<p align="center">
+    <a href="https://nitratine.net/price-per-unit/">Related post on Nitratine.net</a>
+</p>
 
 ## Introduction
 I really wanted some more practice with the Android SDK so I decided to make something that I would have liked to have.
