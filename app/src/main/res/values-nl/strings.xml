@@ -1,4 +1,5 @@
 <resources>
+    <string name="app_name">Prijs Per Stuk</string>
     <string name="unit_type">Eenheidstype:</string>
     <string name="weight">Gewicht</string>
     <string name="volume">Volume</string>

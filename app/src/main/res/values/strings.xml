@@ -24,10 +24,10 @@
     <string name="bug_reporting">Bug Reporting</string>
     <string name="developers_site">Developers Site</string>
     <string name="licenses">Licenses</string>
-    <string name="play_store_location">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
-    <string name="developer_site_url">https://nitratine.net/</string>
-    <string name="bug_reporting_url">https://github.com/brentvollebregt/price-per-unit/issues</string>
-    <string name="licenses_html"><![CDATA[
+    <string name="play_store_location" translatable="false">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
+    <string name="developer_site_url" translatable="false">https://nitratine.net/</string>
+    <string name="bug_reporting_url" translatable="false">https://github.com/brentvollebregt/price-per-unit/issues</string>
+    <string name="licenses_html" translatable="false"><![CDATA[
     <html>
     <head>
         <style>
