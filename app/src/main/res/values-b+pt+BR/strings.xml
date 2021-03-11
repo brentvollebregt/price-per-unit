@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Preço Por Unidade</string>
+    <string name="unit_type">Unidade:</string>
+    <string name="weight">Peso</string>
+    <string name="volume">Volume</string>
+    <string name="length">Comprimento</string>
+    <string name="pieces">Peças</string>
+    <string name="clear">Limpar</string>
+    <string name="add_item">Adicionar Item</string>
+    <string name="item_name">Nome do Item</string>
+    <string name="price">Preço</string>
+    <string name="quantity">Quantidade</string>
+    <string name="size_per_quantity">Medida</string>
+    <string name="items_ordered_by_best_ratio">Itens Ordenados por Melhor Proporção</string>
+    <string name="show_in">Exibir:</string>
+    <string name="settings">Configurações</string>
+    <string name="settings_and_about">Configurações &amp; Sobre</string>
+    <string name="currency_symbol">Símbolo de Moeda</string>
+    <string name="rounding">Arredondamento</string>
+    <string name="show_results_tile">Exibir Resultados</string>
+    <string name="remember_data">Lembrar Dados</string>
+    <string name="version">Versão %1$s</string>
+    <string name="rate_this_app">Avalie Este App</string>
+    <string name="bug_reporting">Relatar Problemas</string>
+    <string name="developers_site">Site do Desenvolvedor</string>
+    <string name="licenses">Licenças</string>
+</resources>
