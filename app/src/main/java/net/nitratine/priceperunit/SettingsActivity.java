@@ -25,7 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Settings & About");
+        getSupportActionBar().setTitle(getString(R.string.settings_and_about));
 
         final EditText currencyValueTextEdit = (EditText) findViewById(R.id.currencyValueTextEdit);
         final Spinner roundingValueSpinner = (Spinner) findViewById(R.id.roundingValueSpinner);
@@ -41,7 +41,7 @@ public class SettingsActivity extends AppCompatActivity {
         roundingValueSpinner.setSelection(adapter.getPosition(String.valueOf(Settings.rounding)));
         showResultsValueSwitch.setChecked(Settings.showResultsTile);
         rememberDataValueSwitch.setChecked(Settings.rememberData);
-        versionTag.setText("Version " + BuildConfig.VERSION_NAME);
+        versionTag.setText(getString(R.string.version, BuildConfig.VERSION_NAME));
 
         currencyValueTextEdit.addTextChangedListener(new TextWatcher() {
             @Override

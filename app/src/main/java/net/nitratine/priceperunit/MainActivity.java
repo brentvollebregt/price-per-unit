@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     LinearLayout itemLayout;
     Spinner unitTypeSpinner;
-    Units unitWorker = new Units();
+    Units unitWorker;
 
     // flags
     String currentCurrencySymbol;
@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide();
+
+        unitWorker = new Units(getApplicationContext());
 
         Settings.setUp(this);
         Settings.pullSettings();

@@ -19,9 +19,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:ems="10"
-            android:hint="Item Name"
+            android:hint="@string/item_name"
             android:inputType="textPersonName"
-            android:text="Item"
             android:textSize="16sp" />
 
         <Spinner
@@ -44,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Price"
+            android:hint="@string/price"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -55,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Quantity"
+            android:hint="@string/quantity"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="16sp" />
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Size Per Qty"
+            android:hint="@string/size_per_quantity"
             android:inputType="numberDecimal"
             android:textAlignment="center"
             android:textSize="16sp" />

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Prijs Per Stuk</string>
+    <string name="unit_type">Eenheidstype:</string>
+    <string name="weight">Gewicht</string>
+    <string name="volume">Volume</string>
+    <string name="length">Lengte</string>
+    <string name="pieces">Stuks</string>
+    <string name="clear">Wissen</string>
+    <string name="add_item">Artikel toevoegen</string>
+    <string name="item_name">Naam artikel</string>
+    <string name="price">Bedrag</string>
+    <string name="quantity">Hoeveelheid</string>
+    <string name="size_per_quantity">Afmeting per hoeveelheid</string>
+    <string name="items_ordered_by_best_ratio">Artikelen geordend op beste verhouding</string>
+    <string name="show_in">Toon in:</string>
+    <string name="settings">Instellingen</string>
+    <string name="settings_and_about">Instellingen &amp; Over</string>
+    <string name="currency_symbol">Valutasymbool</string>
+    <string name="rounding">Afronding (d.p.)</string>
+    <string name="show_results_tile">Tegel met resultaten weergeven</string>
+    <string name="remember_data">Onthoud gegevens</string>
+    <string name="version">Versie %1$s</string>
+    <string name="rate_this_app">Beoordeel deze app</string>
+    <string name="bug_reporting">Bug melden</string>
+    <string name="developers_site">Webpagina ontwikkelaar</string>
+    <string name="licenses">Licentie</string>
+</resources>

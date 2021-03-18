@@ -49,7 +49,7 @@
                         android:layout_weight="0.57"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Currency Symbol"
+                        android:text="@string/currency_symbol"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -90,7 +90,7 @@
                         android:layout_weight="0.57"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Rounding (d.p.)"
+                        android:text="@string/rounding"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -123,7 +123,7 @@
                         android:layout_weight="0.57"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Show Results Tile"
+                        android:text="@string/show_results_tile"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -157,7 +157,7 @@
                         android:layout_weight="0.57"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Remember Data"
+                        android:text="@string/remember_data"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
 
@@ -201,7 +201,7 @@
                         android:layout_weight="0.87"
                         android:gravity="center_vertical"
                         android:paddingLeft="8dp"
-                        android:text="Version 1.3.0"
+                        android:text="@string/version"
                         android:textColor="@android:color/white"
                         android:textSize="18sp" />
                 </LinearLayout>
@@ -231,7 +231,7 @@
                             android:layout_weight="0.87"
                             android:gravity="center_vertical"
                             android:paddingLeft="8dp"
-                            android:text="Rate This App"
+                            android:text="@string/rate_this_app"
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -262,7 +262,7 @@
                             android:layout_weight="0.87"
                             android:gravity="center_vertical"
                             android:paddingLeft="8dp"
-                            android:text="Bug Reporting"
+                            android:text="@string/bug_reporting"
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -302,7 +302,7 @@
                             android:layout_weight="0.87"
                             android:gravity="center_vertical"
                             android:paddingLeft="8dp"
-                            android:text="Developers Site"
+                            android:text="@string/developers_site"
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -333,7 +333,7 @@
                             android:layout_weight="0.87"
                             android:gravity="center_vertical"
                             android:paddingLeft="8dp"
-                            android:text="Licenses"
+                            android:text="@string/licenses"
                             android:textColor="@android:color/white"
                             android:textSize="18sp" />
                     </LinearLayout>

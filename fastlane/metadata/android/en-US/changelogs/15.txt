@@ -1,0 +1,2 @@
+* Added Dutch translations within App
+* Added Spanish descriptions for F-Droid

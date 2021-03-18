@@ -36,7 +36,7 @@
                 android:layout_marginTop="4dp"
                 android:background="@color/colorPrimary"
                 android:padding="4dp"
-                android:text="Price Per Unit"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@android:color/white"
                 android:textSize="12sp" />
@@ -54,8 +54,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1.1"
                     android:gravity="right|center_vertical"
-                    android:paddingLeft="4dp"
-                    android:text="Unit Type: "
+                    android:text="@string/unit_type"
                     android:textColor="@android:color/white"
                     android:textSize="24sp" />
 
@@ -64,7 +63,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1.2"
-                    android:backgroundTint="@android:color/white" />
+                    app:backgroundTint="@android:color/white" />
 
                 <Button
                     android:id="@+id/clearBtn"
@@ -72,7 +71,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.7"
-                    android:text="Clear"
+                    android:text="@string/clear"
                     android:textColor="@android:color/black" />
 
             </LinearLayout>
@@ -110,10 +109,10 @@
                             android:id="@+id/textView3"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_weight="1"
-                            android:gravity="right|center"
-                            android:text="Add item"
+                            android:gravity="end|center"
+                            android:text="@string/add_item"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 
@@ -148,7 +147,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.6"
                         android:padding="2dp"
-                        android:text="Items Ordered by Best Ratio"
+                        android:text="@string/items_ordered_by_best_ratio"
                         android:textAlignment="center"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
@@ -158,8 +157,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.15"
-                        android:gravity="right"
-                        android:text="Show in:"
+                        android:gravity="end"
+                        android:text="@string/show_in"
                         android:textColor="@android:color/white"
                         android:textSize="14sp" />
 
@@ -168,7 +167,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.25"
-                        android:backgroundTint="@android:color/white" />
+                        app:backgroundTint="@android:color/white" />
 
                 </LinearLayout>
 
@@ -198,7 +197,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:paddingLeft="6dp"
+                            android:paddingStart="6dp"
                             android:text="TextView"
                             android:textAlignment="textStart"
                             android:textColor="@android:color/white" />
@@ -232,10 +231,10 @@
                             android:id="@+id/settingsTextView"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:layout_marginRight="10dp"
+                            android:layout_marginEnd="10dp"
                             android:layout_weight="1"
-                            android:gravity="center|right"
-                            android:text="Settings"
+                            android:gravity="center|end"
+                            android:text="@string/settings"
                             android:textColor="@android:color/white"
                             android:textSize="16sp" />
 

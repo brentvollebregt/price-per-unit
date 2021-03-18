@@ -1,18 +1,20 @@
 package net.nitratine.priceperunit;
 
+import android.content.Context;
+
 import java.util.ArrayList;
 
 public class Units {
 
     public ArrayList<String> unitTypes = new ArrayList<>();
-    public ArrayList< ArrayList<String> > units = new ArrayList<>();
-    private ArrayList< ArrayList<Double> > unitBaseRelativity = new ArrayList<>();
+    public ArrayList<ArrayList<String>> units = new ArrayList<>();
+    private ArrayList<ArrayList<Double>> unitBaseRelativity = new ArrayList<>();
 
-    public Units() {
-        unitTypes.add("Weight");
-        unitTypes.add("Volume");
-        unitTypes.add("Length");
-        unitTypes.add("Pieces");
+    public Units(Context context) {
+        unitTypes.add(context.getResources().getString(R.string.weight));
+        unitTypes.add(context.getResources().getString(R.string.volume));
+        unitTypes.add(context.getResources().getString(R.string.length));
+        unitTypes.add(context.getResources().getString(R.string.pieces));
 
         ArrayList<String> units_weight = new ArrayList<>();
         ArrayList<Double> units_weight_relativity = new ArrayList<>();
