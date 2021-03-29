@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void addItem(View view) {
-        addItemManual("", "", "", "", "");
+        addItemManual("", "", "1", "", "");
     }
 
     protected void addItemManual(String name, String price, String quantity, String size, String unit) {
