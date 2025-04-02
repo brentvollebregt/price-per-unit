@@ -1,9 +1,6 @@
 name: Generate release APK and AAB
 
 on:
-  push:
-    branches:
-      - release/*
   workflow_dispatch:
 
 jobs:
