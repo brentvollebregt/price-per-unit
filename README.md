@@ -36,3 +36,7 @@ This app is ideal to find the best price in supermarkets but will work just in w
 - No permissions!
 - No Ads!
 - Collects no data!
+
+## Development
+
+To build this you will need to be using Java 1.8. You can get a JRE from https://adoptium.net/temurin/releases/. After setting JAVA_HOME to the root of the JDK (the folder that contains bin, include, jre, etc), go into Android Studio and select Settings -> Build, Execution, Deployment -> Build Tools -> Gradle and set the Gradle JDK to JAVA_HOME (which should be 1.8).

@@ -4,12 +4,12 @@ def keystorePropertiesFile = rootProject.file("keystore.properties")
 def keystoreProperties = new Properties()
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 34
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "net.nitratine.priceperunit"
         minSdkVersion 19
-        targetSdkVersion 30
+        targetSdk 34
         versionCode 18
         versionName "1.6.1"
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
