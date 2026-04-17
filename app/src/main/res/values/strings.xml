@@ -22,7 +22,7 @@
     <string name="version">Version %1$s</string>
     <string name="rate_this_app">Rate This App</string>
     <string name="bug_reporting">Bug Reporting</string>
-    <string name="developers_site">Developers Site</string>
+    <string name="developers_site">Developer\'s Site</string>
     <string name="licenses">Licenses</string>
     <string name="play_store_location" translatable="false">https://play.google.com/store/apps/details?id=net.nitratine.priceperunit</string>
     <string name="developer_site_url" translatable="false">https://nitratine.net/</string>
