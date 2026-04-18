@@ -149,7 +149,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void licenses(View view) {
         WebView webView = (WebView) LayoutInflater.from(this).inflate(R.layout.dialog_licenses, null);
         webView.loadData(getString(R.string.licenses_html), "text/html", null);
-        AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(this, R.style.Theme_AppCompat_Light_Dialog_Alert);
+        AlertDialog.Builder mAlertDialog = new AlertDialog.Builder(this, androidx.appcompat.R.style.Theme_AppCompat_Light_Dialog_Alert);
         mAlertDialog.setTitle("Licenses");
         mAlertDialog.setView(webView);
         mAlertDialog.setPositiveButton(android.R.string.ok, null);
